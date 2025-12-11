@@ -4,6 +4,7 @@ import Home from './pages/corporate/Home';
 import About from './pages/corporate/About';
 import Team from './pages/corporate/Team';
 import AgricHome from './pages/agric/AgricHome';
+import ConstHome from './pages/construct/ConstHome';
 
 // Placeholder components for pages we haven't built yet to prevent errors
 const Placeholder = ({ title }) => (
@@ -26,7 +27,7 @@ function App() {
 
         {/* Sub-Sites */}
         <Route path="/agriculture" element={<AgricHome />} />
-        <Route path="/construction" element={<Placeholder title="EG Construction" />} />
+        <Route path="/construction" element={<ConstHome />} />
       </Routes>
     </>
   );
