@@ -4,6 +4,7 @@ import Home from './pages/corporate/Home';
 import About from './pages/corporate/About';
 import Team from './pages/corporate/Team';
 import Contact from './pages/corporate/Contact';
+import Blog from './pages/corporate/Blog';
 import AgricHome from './pages/agric/AgricHome';
 import ConstHome from './pages/construct/ConstHome';
 
@@ -24,7 +25,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/team" element={<Team />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/blog" element={<Placeholder title="EG Insights" />} />
+        <Route path="/blog" element={<Blog />} />
 
         {/* Sub-Sites */}
         <Route path="/agriculture" element={<AgricHome />} />
