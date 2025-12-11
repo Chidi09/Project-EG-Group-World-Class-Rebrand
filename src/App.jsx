@@ -5,15 +5,9 @@ import About from './pages/corporate/About';
 import Team from './pages/corporate/Team';
 import Contact from './pages/corporate/Contact';
 import Blog from './pages/corporate/Blog';
+import Media from './pages/corporate/Media';
 import AgricHome from './pages/agric/AgricHome';
 import ConstHome from './pages/construct/ConstHome';
-
-// Placeholder components for pages we haven't built yet to prevent errors
-const Placeholder = ({ title }) => (
-  <div style={{ padding: '100px', textAlign: 'center' }}>
-    <h1>{title}</h1><p>Coming Soon in Phase 2</p>
-  </div>
-);
 
 function App() {
   return (
@@ -26,6 +20,7 @@ function App() {
         <Route path="/team" element={<Team />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/media" element={<Media />} />
 
         {/* Sub-Sites */}
         <Route path="/agriculture" element={<AgricHome />} />

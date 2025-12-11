@@ -2,6 +2,16 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Building2, Leaf, HardHat, TrendingUp, Users, Globe } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
+// Client logos data
+const clientLogos = [
+  { name: "ExxonMobil", url: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Exxon_Mobil_Logo.svg/1200px-Exxon_Mobil_Logo.svg.png" },
+  { name: "First Bank", url: "https://upload.wikimedia.org/wikipedia/en/thumb/6/62/First_Bank_of_Nigeria_logo.svg/1200px-First_Bank_of_Nigeria_logo.svg.png" },
+  { name: "Delta State", url: "https://upload.wikimedia.org/wikipedia/commons/2/26/Delta_State_Nigeria_Flag.png" },
+  { name: "Imo State", url: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Flag_of_Imo_State.svg/2560px-Flag_of_Imo_State.svg.png" },
+  { name: "Cross River", url: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Flag_of_Cross_River_State.svg/1200px-Flag_of_Cross_River_State.svg.png" },
+  { name: "FGN", url: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Coat_of_arms_of_Nigeria.svg/1200px-Coat_of_arms_of_Nigeria.svg.png" }
+];
+
 const Home = () => {
   return (
     <main>
@@ -133,6 +143,24 @@ const Home = () => {
               <h3>10+</h3>
               <p>Countries Served</p>
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* CLIENTS SECTION */}
+      <section className="clients-section">
+        <div className="client-container">
+          <h4>Trusted Partners & Clients</h4>
+          
+          <div className="logo-marquee">
+            <div className="marquee-track">
+              {/* We map twice to create the infinite loop effect */}
+              {[...clientLogos, ...clientLogos].map((client, index) => (
+                <div key={index} className="client-logo-item">
+                  <img src={client.url} alt={client.name} title={client.name} />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -418,6 +446,66 @@ const Home = () => {
         .btn-gold:hover {
           background: #e6c349;
           transform: translateY(-2px);
+        }
+        
+        /* CLIENTS SECTION */
+        .clients-section {
+          padding: 60px 0;
+          background: white;
+          overflow: hidden;
+        }
+        
+        .client-container {
+          text-align: center;
+        }
+        
+        .clients-section h4 {
+          font-size: 1rem;
+          color: #999;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          margin-bottom: 30px;
+          font-weight: 600;
+        }
+
+        .logo-marquee {
+          width: 100%;
+          overflow: hidden;
+          position: relative;
+          margin-top: 30px;
+        }
+
+        .marquee-track {
+          display: flex;
+          width: calc(200px * 12);
+          animation: scroll 20s linear infinite;
+        }
+
+        .client-logo-item {
+          width: 200px;
+          padding: 0 30px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .client-logo-item img {
+          max-width: 100%;
+          max-height: 80px;
+          filter: grayscale(100%);
+          opacity: 0.6;
+          transition: all 0.3s ease;
+        }
+
+        .client-logo-item img:hover {
+          filter: grayscale(0%);
+          opacity: 1;
+          transform: scale(1.1);
+        }
+
+        @keyframes scroll {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
         }
         
         @media (max-width: 768px) {
