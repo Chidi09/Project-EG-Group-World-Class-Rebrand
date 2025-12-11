@@ -1,0 +1,166 @@
+/* src/pages/agric/AgricHome.css */
+
+/* COLORS */
+:root {
+  --agric-primary: #4CAF50;
+  --agric-dark: #1B5E20;
+  --agric-light: #E8F5E9;
+  --tech-blue: #2196F3;
+}
+
+/* HERO */
+.agric-hero {
+  height: 85vh;
+  background: url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=2000&q=80') center/cover;
+  position: relative;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+.agric-overlay {
+  background: linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 100%);
+  width: 100%;
+  height: 100%;
+  padding: 0 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-badge {
+  background: var(--agric-primary);
+  display: inline-block;
+  padding: 5px 15px;
+  font-weight: bold;
+  font-size: 0.8rem;
+  margin-bottom: 20px;
+  width: fit-content;
+}
+
+.agric-hero h1 { font-size: 4rem; margin-bottom: 20px; line-height: 1.1; }
+.agric-hero p { font-size: 1.2rem; max-width: 600px; opacity: 0.9; margin-bottom: 40px; }
+
+.stats-row { display: flex; gap: 50px; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 30px; }
+.stat .num { display: block; font-size: 2.5rem; font-weight: 700; color: var(--agric-primary); }
+.stat .label { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+
+/* SCIENCE STRIP */
+.science-strip { background: var(--agric-dark); color: white; padding: 40px 0; }
+.strip-grid { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; }
+.science-item { display: flex; align-items: center; gap: 15px; }
+.science-icon { color: var(--agric-primary); width: 40px; height: 40px; }
+.science-item h4 { font-size: 1.2rem; margin: 0; }
+.science-item p { font-size: 0.9rem; opacity: 0.7; margin: 0; }
+
+/* PRODUCT LAB */
+.product-lab { padding: 80px 0; background: #f8f9fa; }
+.section-header { text-align: center; margin-bottom: 50px; }
+.section-header h2 { font-size: 2.5rem; color: var(--eg-dark); margin-bottom: 10px; }
+.section-header p { color: #666; font-size: 1.1rem; }
+.product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+
+.product-card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+.product-card:hover { transform: translateY(-10px); }
+
+.prod-img { height: 220px; background-size: cover; background-position: center; position: relative; }
+.scan-line {
+  position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+  background: rgba(76, 175, 80, 0.8);
+  box-shadow: 0 0 10px var(--agric-primary);
+  animation: scan 3s infinite linear;
+  display: none;
+}
+.product-card:hover .scan-line { display: block; }
+
+@keyframes scan { 0% { top: 0; } 100% { top: 100%; } }
+
+.prod-info { padding: 20px; }
+.category { font-size: 0.8rem; color: #999; text-transform: uppercase; }
+.prod-info h3 { margin: 5px 0 15px; font-size: 1.3rem; }
+.analyze-btn {
+  background: transparent; border: 1px solid var(--agric-primary); color: var(--agric-primary);
+  padding: 8px 15px; border-radius: 5px; font-weight: 600; width: 100%; transition: 0.3s;
+}
+.product-card:hover .analyze-btn { background: var(--agric-primary); color: white; }
+
+/* MACHINERY */
+.machinery-section { padding: 80px 0; background: white; }
+.machine-layout { display: flex; align-items: center; gap: 50px; }
+.machine-text { flex: 1; }
+.machine-visual { flex: 1; position: relative; }
+
+.machine-text h4 { color: #999; text-transform: uppercase; margin-bottom: 10px; }
+.specs-list { margin-top: 20px; list-style: none; }
+.specs-list li { padding: 10px 0; border-bottom: 1px solid #eee; }
+
+.machine-blueprint { position: relative; border: 5px solid var(--eg-light); border-radius: 10px; overflow: hidden; }
+.machine-blueprint img { width: 100%; display: block; filter: grayscale(100%) contrast(1.2); }
+
+.hotspot { position: absolute; cursor: pointer; }
+.dot { width: 12px; height: 12px; background: var(--const-accent); border-radius: 50%; position: relative; z-index: 2; }
+.pulse {
+  position: absolute; top: -4px; left: -4px; width: 20px; height: 20px;
+  border: 2px solid var(--const-accent); border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+.tooltip {
+  position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+  background: black; color: white; padding: 5px 10px; font-size: 0.8rem;
+  white-space: nowrap; opacity: 0; transition: 0.3s; pointer-events: none;
+}
+.hotspot:hover .tooltip { opacity: 1; bottom: 25px; }
+
+@keyframes pulse { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(3); opacity: 0; } }
+
+/* MODAL */
+.specs-modal-backdrop {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.8); z-index: 2000;
+  display: flex; align-items: center; justify-content: center;
+}
+.specs-card {
+  background: white; width: 400px; padding: 30px; border-radius: 10px; position: relative;
+  box-shadow: 0 0 50px rgba(76, 175, 80, 0.2);
+}
+.close-specs { position: absolute; top: 15px; right: 15px; background: none; border: none; cursor: pointer; }
+.specs-header { margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+.specs-header h3 { margin: 0; font-size: 1.5rem; }
+.specs-header span { color: #999; font-size: 0.9rem; }
+.spec-row { display: flex; align-items: center; margin-bottom: 15px; font-size: 0.9rem; }
+.spec-label { width: 80px; font-weight: 600; color: #555; text-transform: capitalize; }
+.spec-bar-container { flex: 1; height: 8px; background: #eee; border-radius: 4px; margin: 0 15px; overflow: hidden; }
+.spec-bar-fill { height: 100%; background: var(--agric-primary); }
+.spec-value { min-width: 80px; text-align: right; font-weight: 600; }
+.quote-btn { background: var(--eg-dark); color: white; border: none; width: 100%; padding: 12px; border-radius: 5px; margin-top: 20px; font-weight: bold; cursor: pointer; }
+.quote-btn:hover { background: var(--eg-green); }
+
+/* IMPACT */
+.impact-section { padding: 80px 0; background: var(--eg-light); text-align: center; }
+.impact-section h2 { font-size: 2.5rem; margin-bottom: 40px; }
+.impact-card { 
+  background: white; max-width: 800px; margin: 0 auto; padding: 40px; 
+  border-radius: 10px; border-top: 4px solid var(--tech-blue);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+.impact-content { text-align: left; }
+.icon-inline { vertical-align: middle; margin-right: 10px; color: var(--tech-blue); }
+.impact-content h3 { font-size: 1.8rem; margin-bottom: 20px; }
+.impact-content p { font-size: 1.1rem; line-height: 1.8; color: #444; }
+.tags { margin-top: 20px; display: flex; gap: 10px; }
+.tags span { background: #E3F2FD; color: var(--tech-blue); padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; font-weight: 600; }
+
+@media (max-width: 768px) {
+  .agric-hero h1 { font-size: 2.5rem; }
+  .machine-layout { flex-direction: column; }
+  .stats-row { flex-wrap: wrap; gap: 20px; }
+  .specs-card { width: 90%; max-width: 400px; }
+}
+
