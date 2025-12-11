@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 
 // Client logos data
 const clientLogos = [
-  { name: "ExxonMobil", url: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Exxon_Mobil_Logo.svg/1200px-Exxon_Mobil_Logo.svg.png" },
-  { name: "First Bank", url: "https://upload.wikimedia.org/wikipedia/en/thumb/6/62/First_Bank_of_Nigeria_logo.svg/1200px-First_Bank_of_Nigeria_logo.svg.png" },
-  { name: "Delta State", url: "https://upload.wikimedia.org/wikipedia/commons/2/26/Delta_State_Nigeria_Flag.png" },
-  { name: "Imo State", url: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Flag_of_Imo_State.svg/2560px-Flag_of_Imo_State.svg.png" },
-  { name: "Cross River", url: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Flag_of_Cross_River_State.svg/1200px-Flag_of_Cross_River_State.svg.png" },
-  { name: "FGN", url: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Coat_of_arms_of_Nigeria.svg/1200px-Coat_of_arms_of_Nigeria.svg.png" }
+  { name: "ExxonMobil", url: "/images/logos/exxon.jpg" },
+  { name: "First Bank", url: "/images/logos/firstbank.jpg" },
+  { name: "Delta State", url: "/images/logos/delta.jpg" },
+  { name: "Imo State", url: "/images/logos/imo.jpg" },
+  { name: "Cross River", url: "/images/logos/cross-river.jpg" },
+  { name: "FGN", url: "/images/logos/fgn-coat.jpg" }
 ];
 
 const Home = () => {
