@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Home from './pages/corporate/Home'; 
 import About from './pages/corporate/About';
 import Team from './pages/corporate/Team';
+import Contact from './pages/corporate/Contact';
 import AgricHome from './pages/agric/AgricHome';
 import ConstHome from './pages/construct/ConstHome';
 
@@ -22,7 +23,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/team" element={<Team />} />
-        <Route path="/contact" element={<Placeholder title="Contact Us" />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/blog" element={<Placeholder title="EG Insights" />} />
 
         {/* Sub-Sites */}
