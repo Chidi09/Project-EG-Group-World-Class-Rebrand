@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap');
+
+:root {
+  /* Corporate Palette */
+  --eg-green: #2E7D32;       /* Deep Forest Green - Trust */
+  --eg-green-light: #4CAF50; /* Vibrant Green - Growth */
+  --eg-gold: #D4AF37;        /* Metallic Gold - Premium Accent */
+  --eg-dark: #1a1a1a;        /* Charcoal - Text/Footer */
+  --eg-light: #f8f9fa;       /* Off-white - Backgrounds */
+  
+  /* Sub-site Accents */
+  --agric-accent: #8BC34A;   /* Fresh Leaf */
+  --const-accent: #F57F17;   /* Safety Orange/Gold */
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--eg-dark);
+  background-color: #ffffff;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif; /* The "Editorial" Look */
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
+ul { list-style: none; }
+
+/* Utilities */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background: var(--eg-green);
+  color: white;
+  border-radius: 4px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border: 1px solid transparent;
+}
+.btn:hover { background: var(--eg-green-light); transform: translateY(-2px); }
