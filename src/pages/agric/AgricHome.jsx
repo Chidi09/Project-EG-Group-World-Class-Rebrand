@@ -9,28 +9,28 @@ const products = [
     id: 1,
     category: "Aquaculture",
     name: "Catfish Premium Start",
-    image: "https://images.unsplash.com/photo-1520627725832-6804ec8d1a11?auto=format&fit=crop&w=600&q=80",
+    image: "/images/logos/catfish.jpg",
     specs: { size: "0.5mm - 1.0mm", protein: "52%", fat: "8%", floatability: "95%" }
   },
   {
     id: 2,
     category: "Aquaculture",
     name: "Catfish Grower Feed",
-    image: "https://images.unsplash.com/photo-1599307897087-013142278917?auto=format&fit=crop&w=600&q=80",
+    image: "/images/logos/catfish.jpg",
     specs: { size: "4.0mm - 6.0mm", protein: "45%", fat: "6%", floatability: "98%" }
   },
   {
     id: 3,
     category: "Poultry",
     name: "EG Poultry Layer Mash",
-    image: "https://images.unsplash.com/photo-1543167822-4a0b25e7924e?auto=format&fit=crop&w=600&q=80",
+    image: "/images/logos/poultry feed.jpg",
     specs: { type: "Layers", protein: "18%", calcium: "High", energy: "2800 Kcal" }
   },
   {
     id: 4,
     category: "Poultry",
     name: "EG Poultry Starter",
-    image: "https://images.unsplash.com/photo-1612170377033-91880492cb26?auto=format&fit=crop&w=600&q=80",
+    image: "/images/logos/poultry feed.jpg",
     specs: { type: "Broiler/Chick", protein: "23%", calcium: "Medium", energy: "3000 Kcal" }
   }
 ];
@@ -133,7 +133,7 @@ const AgricHome = () => {
             </div>
             <div className="machine-visual">
               <div className="machine-blueprint">
-                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80" alt="Machine" />
+                <img src="/images/logos/drier.jpg" alt="EG500F Fish Drier Machine" />
                 
                 <div className="hotspot" style={{ top: '30%', left: '40%' }}>
                   <div className="dot"></div>
@@ -159,6 +159,9 @@ const AgricHome = () => {
           <div className="impact-card">
             <div className="impact-content">
               <h3><Anchor className="icon-inline"/> Thailand Partnership</h3>
+              <div style={{ marginBottom: '20px' }}>
+                <img src="/images/logos/kaeserat university.jpg" alt="Kasetsart University Partnership" style={{ width: '100%', maxWidth: '600px', borderRadius: '8px', marginBottom: '15px' }} />
+              </div>
               <p>
                 We execute MOUs with the <strong>Royal Kingdom of Thailand</strong>. 
                 Our staff and local co-operatives train at <strong>Kasetsart University</strong> and 

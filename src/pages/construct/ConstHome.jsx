@@ -70,7 +70,7 @@ const ConstHome = () => {
       {/* --- 3. FEATURED PROJECT (Evangel Estate) --- */}
       <section id="projects" className="project-spotlight">
         <div className="project-img">
-          <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1000&q=80" alt="Evangel Estate" />
+          <img src="/images/logos/evangel housing estate .jpg" alt="Evangel Housing Estate" />
           <div className="project-badge">Featured Project</div>
         </div>
         <div className="project-info">
