@@ -40,14 +40,14 @@ const ConstHome = () => {
           <h1>Building Nations.<br />Housing Dreams.</h1>
           <p>We deliver quality projects you can count on. From earthworks in Nigeria to partnerships in the UK and Thailand.</p>
           <div className="hero-actions">
-            <button className="btn-primary">View Portfolio</button>
-            <button className="btn-outline">Our Capability</button>
+            <a href="#projects" className="btn-primary" style={{textDecoration:'none', display:'inline-block', padding:'12px 30px'}}>View Portfolio</a>
+            <a href="#services" className="btn-outline" style={{textDecoration:'none', display:'inline-block', padding:'12px 30px'}}>Our Capabilities</a>
           </div>
         </div>
       </section>
 
       {/* --- 2. SERVICES (THE BLUEPRINT GRID) --- */}
-      <section className="services-section">
+      <section id="services" className="services-section">
         <div className="container">
           <div className="section-head-dark">
             <h2>Our Capabilities</h2>
@@ -68,7 +68,7 @@ const ConstHome = () => {
       </section>
 
       {/* --- 3. FEATURED PROJECT (Evangel Estate) --- */}
-      <section className="project-spotlight">
+      <section id="projects" className="project-spotlight">
         <div className="project-img">
           <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1000&q=80" alt="Evangel Estate" />
           <div className="project-badge">Featured Project</div>

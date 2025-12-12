@@ -16,10 +16,13 @@ const Navbar = () => {
     <nav className={`navbar ${isAgric ? 'nav-agric' : isConst ? 'nav-const' : ''}`}>
       <div className="container nav-container">
         
-        {/* LOGO */}
+        {/* LOGO - UPDATED */}
         <Link to="/" className="logo">
-          <span className="logo-text">EG</span>
-          <span className="logo-suffix">GROUP</span>
+          <img 
+            src="/images/logos/logo (2).jpg" 
+            alt="EG Group" 
+            className="logo-img" 
+          />
         </Link>
 
         {/* DESKTOP LINKS */}

@@ -17,13 +17,14 @@
 }
 
 .logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--eg-green);
-  letter-spacing: -1px;
+  display: flex;
+  align-items: center;
 }
-.logo-suffix { color: var(--eg-dark); }
+.logo-img {
+  height: 50px; /* Adjust based on the image aspect ratio */
+  width: auto;
+  object-fit: contain;
+}
 
 .nav-links { display: flex; gap: 30px; align-items: center; }
 .nav-links a { font-weight: 500; font-size: 0.95rem; color: var(--eg-dark); }

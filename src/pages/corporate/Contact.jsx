@@ -99,26 +99,32 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* RIGHT: Contact Form */}
+          {/* RIGHT: Contact Form (Formspree Integrated) */}
           <div className="form-panel">
             <h3>Send a Message</h3>
-            <form className="contact-form">
+            
+            {/* Replace 'YOUR_FORMSPREE_ID' with your actual Formspree form ID, e.g., 'mrgwzjkv' */}
+            <form 
+              className="contact-form" 
+              action="https://formspree.io/f/YOUR_FORMSPREE_ID" 
+              method="POST"
+            >
               <div className="form-group">
-                <input type="text" placeholder="Your Name" required />
+                <input type="text" name="name" placeholder="Your Name" required />
               </div>
               <div className="form-group">
-                <input type="email" placeholder="Email Address" required />
+                <input type="email" name="email" placeholder="Email Address" required />
               </div>
               <div className="form-group">
-                <select>
-                  <option>General Inquiry</option>
-                  <option>Agriculture Services</option>
-                  <option>Construction Projects</option>
-                  <option>Media & Partnerships</option>
+                <select name="department">
+                  <option value="General">General Inquiry</option>
+                  <option value="Agriculture">Agriculture Services</option>
+                  <option value="Construction">Construction Projects</option>
+                  <option value="Media">Media & Partnerships</option>
                 </select>
               </div>
               <div className="form-group">
-                <textarea placeholder="How can we help you?" rows="5"></textarea>
+                <textarea name="message" placeholder="How can we help you?" rows="5" required></textarea>
               </div>
               <button type="submit" className="submit-btn">
                 Send Message <Send size={18} />

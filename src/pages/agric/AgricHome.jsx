@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Leaf, Droplets, Zap, Anchor, MapPin, X, Info } from 'lucide-react';
 import './AgricHome.css';
 
@@ -195,7 +196,9 @@ const AgricHome = () => {
               ))}
             </div>
             
-            <button className="quote-btn">Request Bulk Quote</button>
+            <Link to="/contact" className="quote-btn" style={{textAlign:'center', display:'block', textDecoration:'none'}}>
+              Request Bulk Quote
+            </Link>
           </div>
         </div>
       )}

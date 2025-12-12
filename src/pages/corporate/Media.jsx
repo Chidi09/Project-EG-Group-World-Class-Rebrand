@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Newspaper, Mic, Globe, ArrowRight } from 'lucide-react';
 import './Media.css';
 
@@ -40,9 +41,9 @@ const Media = () => {
               <li><Mic size={18} /> Exclusive Interviews</li>
             </ul>
 
-            <button className="subscribe-btn">
+            <Link to="/contact" className="subscribe-btn" style={{textDecoration:'none'}}>
               Subscribe to Edition <ArrowRight size={16} />
-            </button>
+            </Link>
           </div>
 
         </div>
