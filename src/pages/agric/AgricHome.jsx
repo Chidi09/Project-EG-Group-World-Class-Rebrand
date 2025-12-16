@@ -1,22 +1,13 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { ReactLenis } from '@studio-freight/react-lenis';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Leaf, Droplets, Zap, Anchor, MapPin, Search, ArrowRight, X } from 'lucide-react';
+import { Leaf, Droplets, Zap, Anchor } from 'lucide-react';
 import './AgricHome.css';
-
-const products = [
-  { id: 1, name: "Catfish Premium Start", category: "Aquaculture", protein: "52%", image: "/images/feed-bag.png" },
-  { id: 2, name: "Catfish Grower Feed", category: "Aquaculture", protein: "45%", image: "/images/feed-bag.png" },
-  { id: 3, name: "EG Poultry Layer Mash", category: "Poultry", protein: "18%", image: "/images/feed-bag.png" },
-  { id: 4, name: "EG Poultry Starter", category: "Poultry", protein: "23%", image: "/images/feed-bag.png" }
-];
 
 const AgricHome = () => {
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: targetRef, offset: ["start start", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
-  
-  const [activeProd, setActiveProd] = useState(null);
 
   return (
     <ReactLenis root>
@@ -66,28 +57,60 @@ const AgricHome = () => {
           </div>
         </section>
 
-        {/* --- 3. PRODUCT SCANNER (Interactive) --- */}
-        <section className="product-scanner-section">
+        {/* --- 3. PREMIUM PRODUCT CATALOG --- */}
+        <section className="product-catalog-section">
           <div className="container">
-            <div className="section-head-tech">
-              <h2>Nutritional Engineering</h2>
-              <p>Select a formulation to analyze composition.</p>
+            <div className="section-head-center">
+              <span className="sub-tag">Our Formulations</span>
+              <h2>Nutritional Excellence</h2>
+              <p>Precision-formulated feed for maximum growth and health.</p>
             </div>
 
-            <div className="scanner-grid">
-              {products.map((prod) => (
-                <div key={prod.id} className="scan-card" onClick={() => setActiveProd(prod)}>
-                  <div className="scan-visual">
-                    <img src={prod.image} alt={prod.name} />
-                    <div className="scan-laser"></div>
-                  </div>
-                  <div className="scan-info">
-                    <span className="cat-tag">{prod.category}</span>
-                    <h4>{prod.name}</h4>
-                    <button className="scan-btn">Analyze Specs <Search size={14}/></button>
-                  </div>
+            <div className="catalog-grid">
+              {/* Product 1 */}
+              <div className="catalog-card">
+                <div className="card-image-box">
+                   <img src="/images/logos/feed-bag.png" alt="Catfish Feed" />
                 </div>
-              ))}
+                <div className="card-details">
+                  <span className="category-badge">Aquaculture</span>
+                  <h3>Catfish Premium Start</h3>
+                  <ul className="specs-list-simple">
+                     <li>Protein: <strong>52%</strong></li>
+                     <li>Floatability: <strong>98%</strong></li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Product 2 */}
+              <div className="catalog-card">
+                <div className="card-image-box">
+                   <img src="/images/logos/feed-bag.png" alt="Grower Feed" />
+                </div>
+                <div className="card-details">
+                  <span className="category-badge">Aquaculture</span>
+                  <h3>Catfish Grower Feed</h3>
+                  <ul className="specs-list-simple">
+                     <li>Protein: <strong>45%</strong></li>
+                     <li>Size: <strong>4mm</strong></li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Product 3 */}
+              <div className="catalog-card">
+                <div className="card-image-box">
+                   <img src="/images/logos/feed-bag.png" alt="Poultry Feed" />
+                </div>
+                <div className="card-details">
+                  <span className="category-badge">Poultry</span>
+                  <h3>EG Layer Mash</h3>
+                  <ul className="specs-list-simple">
+                     <li>Yield: <strong>High</strong></li>
+                     <li>Calcium: <strong>Enriched</strong></li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -109,7 +132,7 @@ const AgricHome = () => {
             </div>
             <div className="blueprint-visual">
               <div className="blueprint-paper">
-                <img src="/images/fish-drier.jpg" alt="Machine" className="machine-img"/>
+                <img src="/images/logos/drier.jpg" alt="Machine" className="machine-img"/>
                 <div className="grid-lines"></div>
                 {/* Hotspots */}
                 <div className="hotspot h1"><span>Insulation</span></div>
