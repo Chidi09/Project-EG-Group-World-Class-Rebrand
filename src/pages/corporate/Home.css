@@ -251,3 +251,23 @@
   
   .stats-flex { flex-direction: column; gap: 50px; }
 }
+
+/* MOBILE FIXES FOR HOME PAGE */
+@media (max-width: 768px) {
+  .agric-hero-section { height: 85vh; } /* Fix hero height */
+  .hero-title-large { font-size: 3rem; }
+  
+  /* Fix Promo Card Stacking */
+  .promo-card { flex-direction: column-reverse; } /* Puts image on top */
+  .promo-visual { height: 250px; width: 100%; }
+  .promo-text { padding: 40px 20px; }
+  .discount-circle { width: 80px; height: 80px; top: 20px; right: 20px; }
+  
+  /* Fix Pillars Grid */
+  .pillars-grid { grid-template-columns: 1fr; height: auto; }
+  .pillar-card { height: 300px; min-height: 300px; }
+  
+  /* Fix Stats Spacing */
+  .stats-flex { flex-direction: column; gap: 40px; padding: 20px; }
+  .stat-num { font-size: 3rem; }
+}

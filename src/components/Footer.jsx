@@ -1,14 +1,72 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { MapPin, Phone, Mail, Facebook, Twitter, Linkedin } from 'lucide-react';
+import './Footer.css';
+
 const Footer = () => {
   return (
-    <footer style={{
-      background: 'var(--eg-dark)',
-      color: 'white',
-      padding: '40px 20px',
-      textAlign: 'center',
-      marginTop: 'auto'
-    }}>
-      <div className="container">
-        <p style={{ opacity: 0.8 }}>© {new Date().getFullYear()} EG Group. All rights reserved.</p>
+    <footer className="site-footer">
+      <div className="container footer-grid">
+        
+        {/* Column 1: Brand */}
+        <div className="footer-col">
+          <img src="/images/logos/logo (2).jpg" alt="EG Group" className="footer-logo" />
+          <p className="footer-desc">
+            Redefining standards in Agriculture, Construction, and Media since 1992. 
+            Moving from words to action.
+          </p>
+        </div>
+
+        {/* Column 2: Quick Links */}
+        <div className="footer-col">
+          <h4>Corporate</h4>
+          <ul className="footer-links">
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/about">About Us</Link></li>
+            <li><Link to="/team">Our Leadership</Link></li>
+            <li><Link to="/blog">Newsroom</Link></li>
+            <li><Link to="/contact">Contact</Link></li>
+          </ul>
+        </div>
+
+        {/* Column 3: Sectors */}
+        <div className="footer-col">
+          <h4>Sectors</h4>
+          <ul className="footer-links">
+            <li><Link to="/agriculture">EG Agriculture</Link></li>
+            <li><Link to="/construction">EG Construction</Link></li>
+            <li><Link to="/media">EG Media</Link></li>
+          </ul>
+        </div>
+
+        {/* Column 4: Contact */}
+        <div className="footer-col">
+          <h4>Head Office</h4>
+          <div className="contact-row">
+            <MapPin size={16} className="f-icon"/>
+            <span>Rasul House, 96, Obafemi Awolowo Way, Ikeja, Lagos.</span>
+          </div>
+          <div className="contact-row">
+            <Phone size={16} className="f-icon"/>
+            <span>0802 312 3167</span>
+          </div>
+          <div className="contact-row">
+            <Mail size={16} className="f-icon"/>
+            <span>info@erstegraceland.net</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div className="footer-bottom">
+        <div className="container bottom-flex">
+          <p>&copy; {new Date().getFullYear()} Erste Graceland Limited. All rights reserved.</p>
+          <div className="social-links">
+            <a href="#"><Facebook size={18}/></a>
+            <a href="#"><Twitter size={18}/></a>
+            <a href="#"><Linkedin size={18}/></a>
+          </div>
+        </div>
       </div>
     </footer>
   );

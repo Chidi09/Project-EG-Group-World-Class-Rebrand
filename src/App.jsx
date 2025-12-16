@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import Home from './pages/corporate/Home'; 
 import About from './pages/corporate/About';
 import Team from './pages/corporate/Team';
@@ -26,6 +27,7 @@ function App() {
         <Route path="/agriculture" element={<AgricHome />} />
         <Route path="/construction" element={<ConstHome />} />
       </Routes>
+      <Footer />
     </>
   );
 }

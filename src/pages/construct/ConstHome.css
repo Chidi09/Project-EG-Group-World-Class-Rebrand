@@ -86,3 +86,20 @@
   .project-image-frame { height: 300px; }
   .map-styled-grid { flex-direction: column; align-items: center; }
 }
+
+/* MOBILE FIXES FOR CONSTRUCTION PAGE */
+@media (max-width: 768px) {
+  .const-hero-brand h1 { font-size: 2.8rem; }
+  .const-hero-bg { height: 100%; } /* Ensure bg covers height */
+  
+  /* Fix Services Grid */
+  .brand-grid { grid-template-columns: 1fr; }
+  
+  /* Fix Project Section */
+  .project-layout { flex-direction: column; gap: 40px; }
+  .project-image-frame { width: 100%; height: 250px; }
+  
+  /* Fix Map */
+  .map-styled-grid { flex-direction: column; width: 100%; }
+  .map-card { width: 100%; }
+}

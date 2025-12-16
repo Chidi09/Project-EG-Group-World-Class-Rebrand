@@ -65,16 +65,28 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* MOBILE MENU */}
-      {isOpen && (
-        <div className="mobile-menu">
-          <Link to="/" onClick={() => setIsOpen(false)}>Home</Link>
-          <Link to="/about" onClick={() => setIsOpen(false)}>About Us</Link>
-          <Link to="/agriculture" onClick={() => setIsOpen(false)}>Agriculture</Link>
-          <Link to="/construction" onClick={() => setIsOpen(false)}>Construction</Link>
-          <Link to="/contact" onClick={() => setIsOpen(false)}>Contact</Link>
-        </div>
-      )}
+      {/* MOBILE MENU - UPDATED WITH ALL LINKS */}
+      <div className={`mobile-menu ${isOpen ? 'active' : ''}`}>
+        <Link to="/" onClick={() => setIsOpen(false)}>Home</Link>
+        <Link to="/about" onClick={() => setIsOpen(false)}>About Us</Link>
+        <Link to="/team" onClick={() => setIsOpen(false)}>Our Team</Link>
+        <Link to="/blog" onClick={() => setIsOpen(false)}>Newsroom</Link>
+        <Link to="/media" onClick={() => setIsOpen(false)}>Media</Link>
+        
+        <div className="mobile-divider"></div>
+        
+        <span className="mobile-label">Sectors</span>
+        <Link to="/agriculture" className="mobile-sub-link" onClick={() => setIsOpen(false)}>
+          <Tractor size={16}/> EG Agriculture
+        </Link>
+        <Link to="/construction" className="mobile-sub-link" onClick={() => setIsOpen(false)}>
+          <Hammer size={16}/> EG Construction
+        </Link>
+        
+        <Link to="/contact" className="mobile-contact-btn" onClick={() => setIsOpen(false)}>
+          Contact Us
+        </Link>
+      </div>
     </nav>
   );
 };
