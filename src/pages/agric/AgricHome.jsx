@@ -70,7 +70,7 @@ const AgricHome = () => {
               {/* Product 1 */}
               <div className="catalog-card">
                 <div className="card-image-box">
-                   <img src="/images/logos/feed-bag.png" alt="Catfish Feed" />
+                   <img src="/images/catfish-feed.png" alt="Catfish Feed" />
                 </div>
                 <div className="card-details">
                   <span className="category-badge">Aquaculture</span>
@@ -85,7 +85,7 @@ const AgricHome = () => {
               {/* Product 2 */}
               <div className="catalog-card">
                 <div className="card-image-box">
-                   <img src="/images/logos/feed-bag.png" alt="Grower Feed" />
+                   <img src="/images/grower-feed.png" alt="Grower Feed" />
                 </div>
                 <div className="card-details">
                   <span className="category-badge">Aquaculture</span>
@@ -100,7 +100,7 @@ const AgricHome = () => {
               {/* Product 3 */}
               <div className="catalog-card">
                 <div className="card-image-box">
-                   <img src="/images/logos/feed-bag.png" alt="Poultry Feed" />
+                   <img src="/images/layer-mash.png" alt="Poultry Feed" />
                 </div>
                 <div className="card-details">
                   <span className="category-badge">Poultry</span>

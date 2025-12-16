@@ -44,7 +44,7 @@ const Footer = () => {
           <h4>Head Office</h4>
           <div className="contact-row">
             <MapPin size={16} className="f-icon"/>
-            <span>Rasul House, 96, Obafemi Awolowo Way, Ikeja, Lagos.</span>
+            <span>6 Gasline Road, Opposite Chelsea, Ota, Ogun State.</span>
           </div>
           <div className="contact-row">
             <Phone size={16} className="f-icon"/>

@@ -51,13 +51,13 @@
 
 .hero-content-agric { position: relative; z-index: 2; color: white; max-width: 800px; }
 
-/* GLASS BACKDROP for Text Pop */
+/* Remove the glass box */
 .text-backdrop {
-  background: rgba(27, 77, 62, 0.3); /* Subtle dark green tint */
-  backdrop-filter: blur(10px);
-  padding: 40px; border-radius: 20px;
-  border: 1px solid rgba(255,255,255,0.1);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  background: transparent;
+  backdrop-filter: none;
+  border: none;
+  box-shadow: none;
+  padding: 0;
 }
 
 .eco-badge {
@@ -70,10 +70,31 @@
 @keyframes spin { 100% { transform: rotate(360deg); } }
 
 .hero-title-large {
-  font-family: 'Playfair Display', serif; font-size: 5rem; line-height: 1.05; margin-bottom: 25px;
-  text-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  font-family: 'Playfair Display', serif;
+  font-size: 5rem;
+  line-height: 1.05;
+  margin-bottom: 25px;
+  color: white;
+  
+  /* Text Shadow for readability against any background */
+  text-shadow: 0 4px 20px rgba(0,0,0,0.8);
 }
-.text-highlight { color: var(--leaf-green); font-style: italic; }
+
+/* The "Moving Glow" Animation on the abundance text */
+.text-highlight {
+  font-style: italic;
+  background: linear-gradient(90deg, #4CAF50, #D4AF37, #4CAF50);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 4s linear infinite;
+  font-weight: 700;
+  text-shadow: none; /* Clip needs no shadow to work */
+}
+
+@keyframes shine {
+  to { background-position: 200% center; }
+}
 
 .hero-desc-agric {
   font-size: 1.3rem; color: #f0f0f0; margin-bottom: 40px; font-weight: 300; line-height: 1.6;
@@ -254,8 +275,26 @@
 
 /* MOBILE FIXES FOR HOME PAGE */
 @media (max-width: 768px) {
-  .agric-hero-section { height: 85vh; } /* Fix hero height */
-  .hero-title-large { font-size: 3rem; }
+  .agric-hero-section { 
+    height: 85vh; /* Taller on mobile for content */
+    align-items: flex-end; /* Push text down slightly */
+    padding-bottom: 80px;
+  }
+  
+  .hero-content-agric {
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: left;
+  }
+
+  .hero-title-large { 
+    font-size: 3.2rem; /* readable on mobile */
+  }
+  
+  .hero-desc-agric {
+    font-size: 1.1rem;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.9); /* Heavy shadow for mobile readability */
+  }
   
   /* Fix Promo Card Stacking */
   .promo-card { flex-direction: column-reverse; } /* Puts image on top */

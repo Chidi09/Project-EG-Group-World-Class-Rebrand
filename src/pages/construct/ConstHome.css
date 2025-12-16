@@ -32,7 +32,15 @@
   font-family: 'Playfair Display', serif; font-size: 5rem; line-height: 1.1; margin-bottom: 30px; 
 }
 .text-gold { color: var(--brand-gold); font-style: italic; }
-.const-hero-brand p { max-width: 600px; font-size: 1.2rem; opacity: 0.9; font-weight: 300; }
+.const-hero-brand p { max-width: 600px; font-size: 1.2rem; opacity: 0.9; font-weight: 300; margin-bottom: 30px; }
+
+.btn-industrial {
+  background: var(--brand-gold); color: white; border: none; padding: 15px 40px;
+  font-weight: bold; text-transform: uppercase; letter-spacing: 2px;
+  display: inline-flex; align-items: center; gap: 10px; transition: 0.3s; cursor: pointer;
+  border-radius: 4px;
+}
+.btn-industrial:hover { background: #b8941f; }
 
 /* SERVICES GRID */
 .services-brand-section { padding: 80px 0; background: var(--brand-white); margin-top: -60px; position: relative; z-index: 5; }

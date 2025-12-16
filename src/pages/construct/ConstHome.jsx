@@ -1,5 +1,6 @@
 import React from 'react';
 import { ReactLenis } from '@studio-freight/react-lenis';
+import { Link } from 'react-router-dom';
 import { Ruler, Home, Truck, Briefcase, Globe, ArrowRight } from 'lucide-react';
 import './ConstHome.css';
 
@@ -17,6 +18,9 @@ const ConstHome = () => {
             <span className="brand-pill">EG Construction</span>
             <h1>Constructing <br/> <span className="text-gold">Legacies.</span></h1>
             <p>From complex earthworks to high-rise developments. We build with the precision of engineers and the heart of nation-builders.</p>
+            <Link to="/contact" className="btn-industrial" style={{textDecoration: 'none', display: 'inline-flex'}}>
+              Start a Project <ArrowRight size={18}/>
+            </Link>
           </div>
         </section>
 
@@ -64,7 +68,9 @@ const ConstHome = () => {
                    <span>Status</span> <strong>Completed</strong>
                  </div>
                </div>
-               <button className="btn-brand-dark">View Portfolio <ArrowRight size={16}/></button>
+               <Link to="/contact" className="btn-brand-dark" style={{textDecoration: 'none', display: 'inline-flex'}}>
+                 Request Case Study <ArrowRight size={16}/>
+               </Link>
              </div>
 
              <div className="project-image-frame">
