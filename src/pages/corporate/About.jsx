@@ -1,148 +1,131 @@
 import React from 'react';
-import { Briefcase, MapPin, TrendingUp, Anchor, Truck, Home, Wheat } from 'lucide-react';
+import { ReactLenis } from '@studio-freight/react-lenis';
+import { motion } from 'framer-motion';
+import { Calendar, Briefcase, MapPin, Wheat, Home, Truck } from 'lucide-react';
 import './About.css';
 
 const About = () => {
   return (
-    <div className="about-wrapper">
-      
-      {/* --- 1. HERO SECTION --- */}
-      <section className="about-hero">
-        <div className="about-hero-content">
-          <h4>Since 1992</h4>
-          <h1>Driven by Principles.<br />Defined by Growth.</h1>
-          <p>
-            From a small consultancy to a global conglomerate. 
-            We are EG Group—redefining standards in Agriculture, Construction, and Media.
-          </p>
-        </div>
-      </section>
-
-      {/* --- 2. THE STORY (TIMELINE) --- */}
-      <section className="history-section">
-        <div className="container">
-          <div className="section-head">
-            <h2>Our Journey</h2>
-            <div className="underline"></div>
-            <p>From humble beginnings to multinational operations.</p>
+    <ReactLenis root>
+      <div className="about-elite-wrapper">
+        
+        {/* --- 1. HERO --- */}
+        <section className="about-hero-elite">
+          <div className="container">
+            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+              <span className="since-tag">Since 1992</span>
+              <h1>Driven by Principles.<br />Defined by <span className="text-accent">Growth.</span></h1>
+              <p>From a small consultancy to a global agricultural conglomerate. We are EG Group.</p>
+            </motion.div>
           </div>
+        </section>
 
-          <div className="timeline">
-            {/* 1992 */}
-            <div className="timeline-item">
-              <div className="timeline-icon"><Anchor size={24} /></div>
-              <div className="timeline-content">
-                <span className="year">1992</span>
-                <h3>The Foundation</h3>
-                <p>Started as <strong>Anchor Services Ltd</strong>, a small-scale agricultural consultancy focused on delivering expertise to local farmers.</p>
+        {/* --- 2. VISUAL TIMELINE --- */}
+        <section className="timeline-section">
+          <div className="container">
+            <div className="section-head">
+              <h2>Our Journey</h2>
+              <div className="green-line"></div>
+            </div>
+
+            <div className="timeline-container">
+              {/* Node 1: 1992 */}
+              <div className="timeline-row">
+                <div className="timeline-content left">
+                  <span className="year-label">1992</span>
+                  <h3>The Foundation</h3>
+                  <p>Started as <strong>Anchor Services Ltd</strong>, a small-scale consultancy delivering expertise to local farmers.</p>
+                </div>
+                <div className="timeline-visual right" style={{backgroundImage: "url('/images/logos/history-1992.jpg')"}}></div>
+              </div>
+
+              {/* Node 2: 2000s */}
+              <div className="timeline-row reverse">
+                <div className="timeline-content right">
+                  <span className="year-label">2000s</span>
+                  <h3>Rapid Expansion</h3>
+                  <p>Expanded into cereal farming, poultry, and fish farming. Began global marketing of agricultural products.</p>
+                </div>
+                <div className="timeline-visual left" style={{backgroundImage: "url('/images/logos/history-growth.jpg')"}}></div>
+              </div>
+
+              {/* Node 3: Today */}
+              <div className="timeline-row">
+                <div className="timeline-content left">
+                  <span className="year-label">Today</span>
+                  <h3>The Conglomerate</h3>
+                  <p>Now <strong>EG Group</strong>. A powerhouse with subsidiaries in Construction, Palm Oil, and Media, spanning 3 continents.</p>
+                </div>
+                <div className="timeline-visual right" style={{backgroundImage: "url('/images/logos/history-today.jpg')"}}></div>
               </div>
             </div>
+          </div>
+        </section>
 
-            {/* Expansion */}
-            <div className="timeline-item right">
-              <div className="timeline-icon"><TrendingUp size={24} /></div>
-              <div className="timeline-content">
-                <span className="year">2000s</span>
-                <h3>Rapid Expansion</h3>
-                <p>Grew to include cereal farming, poultry, and fish farming. We began processing activities and global marketing of agricultural products.</p>
+        {/* --- 3. STRUCTURE GRID --- */}
+        <section className="structure-section">
+          <div className="container">
+            <div className="section-head-white">
+              <h2>Our Structure</h2>
+              <p>A diversified portfolio ensuring stability.</p>
+            </div>
+
+            <div className="structure-grid">
+              <div className="structure-card">
+                <Wheat className="struct-icon" />
+                <h3>EG Agriculture</h3>
+                <p>Poultry, Fish Farming, Cereal.</p>
+              </div>
+              <div className="structure-card">
+                <Home className="struct-icon" />
+                <h3>EG Construction</h3>
+                <p>Housing & Infrastructure.</p>
+              </div>
+              <div className="structure-card">
+                <Truck className="struct-icon" />
+                <h3>EG Palm Ltd</h3>
+                <p>14,000 Hectares of Palm.</p>
+              </div>
+              <div className="structure-card">
+                <Briefcase className="struct-icon" />
+                <h3>Anchor Services</h3>
+                <p>Consultancy & Strategy.</p>
               </div>
             </div>
-
-            {/* Today */}
-            <div className="timeline-item">
-              <div className="timeline-icon"><Briefcase size={24} /></div>
-              <div className="timeline-content">
-                <span className="year">Today</span>
-                <h3>The Conglomerate</h3>
-                <p>Now <strong>EG Group</strong>. A powerhouse with subsidiaries in Construction, Food, Palm Oil, and Media, partnering with associates in Europe, America, and Asia.</p>
-              </div>
-            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* --- 3. THE GROUP STRUCTURE (SUBSIDIARIES) --- */}
-      <section className="subsidiaries-section">
-        <div className="container">
-          <div className="section-head">
-            <h2>Our Structure</h2>
-            <p>A diversified portfolio ensuring stability and excellence.</p>
-          </div>
-
-          <div className="subsidiary-grid">
-            <div className="sub-card">
-              <Wheat className="sub-icon" />
-              <h3>EG Agriculture</h3>
-              <p>Poultry, Fish Farming, and extensive Cereal production.</p>
-            </div>
-            <div className="sub-card">
-              <Home className="sub-icon" />
-              <h3>EG Construction</h3>
-              <p>Affordable housing, roads, and allied infrastructure.</p>
-            </div>
-            <div className="sub-card">
-              <Truck className="sub-icon" />
-              <h3>EG Palm Ltd</h3>
-              <p>Managing over 14,000 hectares of palm plantations.</p>
-            </div>
-            <div className="sub-card">
-              <Briefcase className="sub-icon" />
-              <h3>Anchor Services</h3>
-              <p>The original consultancy arm, still driving strategy.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* --- 4. SCALE & FOOTPRINT (DATA) --- */}
-      <section className="scale-section">
-        <div className="scale-overlay">
+        {/* --- 4. FOOTPRINT MAP (Data) --- */}
+        <section className="footprint-section">
           <div className="container">
             <h2>Our Footprint</h2>
-            <div className="scale-grid">
-              
-              <div className="scale-item">
-                <div className="scale-marker">
-                  <MapPin className="pin-icon" />
-                  <span>Imo State</span>
-                </div>
+            <div className="footprint-grid">
+              <div className="fp-item">
+                <MapPin className="fp-icon"/>
                 <h3>4,000</h3>
-                <p>Hectares Palm Plantation<br/>(Imo Palm Ltd)</p>
+                <span>Hectares (Imo State)</span>
               </div>
-
-              <div className="scale-item">
-                <div className="scale-marker">
-                  <MapPin className="pin-icon" />
-                  <span>Calabar</span>
-                </div>
+              <div className="fp-item">
+                <MapPin className="fp-icon"/>
                 <h3>10,000</h3>
-                <p>Hectares Palm Plantation</p>
+                <span>Hectares (Calabar)</span>
               </div>
-
-              <div className="scale-item">
-                <div className="scale-marker">
-                  <MapPin className="pin-icon" />
-                  <span>Cross River</span>
-                </div>
+              <div className="fp-item">
+                <MapPin className="fp-icon"/>
                 <h3>300</h3>
-                <p>Ton/Day Quarry Capacity</p>
+                <span>Ton/Day Quarry</span>
               </div>
-
-              <div className="scale-item">
-                <div className="scale-marker">
-                  <MapPin className="pin-icon" />
-                  <span>Lagos (HQ)</span>
-                </div>
-                <h3>Hub</h3>
-                <p>Training & Feed Mill Center<br/>(Oko-Oba, Agege)</p>
+              <div className="fp-item">
+                <MapPin className="fp-icon"/>
+                <h3>HQ</h3>
+                <span>Lagos Hub</span>
               </div>
-
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-    </div>
+      </div>
+    </ReactLenis>
   );
 };
 

@@ -1,174 +1,167 @@
+/* src/pages/corporate/Home.css */
+
 /* --- PALETTE --- */
 :root {
   --deep-green: #1B4D3E; /* The Core Brand Color */
   --leaf-green: #4CAF50; /* Highlights */
   --rice-gold: #D4AF37;  /* Promo Accent */
   --pure-white: #ffffff;
+  --off-white: #f9f9f9;
 }
 
-.home-wrapper { background: #fdfdfd; overflow-x: hidden; }
+.home-wrapper { background: var(--off-white); overflow-x: hidden; }
 
-/* --- 1. HERO (ALIVE) --- */
+/* --- 1. HERO (Refined Readability) --- */
 .agric-hero-section {
   position: relative; height: 95vh; width: 100%;
   overflow: hidden; display: flex; align-items: center;
 }
 
-.ken-burns-container {
-  position: absolute; inset: 0; z-index: 0;
-}
-
+.ken-burns-container { position: absolute; inset: 0; z-index: 0; }
 .hero-bg-img {
   width: 100%; height: 100%;
-  /* Acts as hero-agric.jpg: bright, green, expansive */
-  background-image: url('/images/logos/modern tractor in green field low angle.jpg');
+  background-image: url('/images/hero-agric.jpg'); 
   background-size: cover; background-position: center;
   animation: kenBurns 20s infinite alternate linear;
 }
 
+/* Darker Gradient for better text pop */
 .hero-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(to right, rgba(27, 77, 62, 0.9), rgba(27, 77, 62, 0.3));
+  background: linear-gradient(to right, rgba(27, 77, 62, 0.95) 0%, rgba(27, 77, 62, 0.6) 50%, rgba(0,0,0,0.2) 100%);
 }
 
-@keyframes kenBurns {
-  0% { transform: scale(1); }
-  100% { transform: scale(1.15); }
-}
+@keyframes kenBurns { 0% { transform: scale(1); } 100% { transform: scale(1.15); } }
 
 /* Floating Particles */
 .particles-container { position: absolute; inset: 0; pointer-events: none; }
-.particle {
-  position: absolute; background: rgba(255,255,255,0.4); border-radius: 50%;
-  animation: floatUp linear infinite;
-}
+.particle { position: absolute; background: rgba(255,255,255,0.4); border-radius: 50%; animation: floatUp linear infinite; }
 .p1 { width: 5px; height: 5px; left: 20%; bottom: -10px; animation-duration: 8s; }
 .p2 { width: 8px; height: 8px; left: 50%; bottom: -10px; animation-duration: 12s; animation-delay: 2s; }
 .p3 { width: 4px; height: 4px; left: 80%; bottom: -10px; animation-duration: 10s; animation-delay: 1s; }
 
-@keyframes floatUp {
-  0% { transform: translateY(0); opacity: 0; }
-  50% { opacity: 1; }
-  100% { transform: translateY(-100vh); opacity: 0; }
-}
+@keyframes floatUp { 0% { transform: translateY(0); opacity: 0; } 50% { opacity: 1; } 100% { transform: translateY(-100vh); opacity: 0; } }
 
-.hero-content-agric { position: relative; z-index: 2; padding-left: 5%; color: white; }
+.hero-content-agric { position: relative; z-index: 2; padding-left: 5%; color: white; max-width: 800px; }
+
+/* GLASS BACKDROP for Text Pop */
+.text-backdrop {
+  background: rgba(27, 77, 62, 0.3); /* Subtle dark green tint */
+  backdrop-filter: blur(10px);
+  padding: 40px; border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
 
 .eco-badge {
   display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(76, 175, 80, 0.2); border: 1px solid var(--leaf-green);
-  padding: 8px 16px; border-radius: 20px; font-weight: 600; font-size: 0.9rem;
-  margin-bottom: 20px; color: var(--leaf-green); text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.15); border: 1px solid var(--leaf-green);
+  padding: 8px 16px; border-radius: 20px; font-weight: 700; font-size: 0.85rem;
+  margin-bottom: 25px; color: #81C784; text-transform: uppercase; letter-spacing: 1px;
 }
 .spin-leaf { animation: spin 10s infinite linear; }
 @keyframes spin { 100% { transform: rotate(360deg); } }
 
 .hero-title-large {
-  font-family: 'Playfair Display', serif; font-size: 5rem; line-height: 1.1; margin-bottom: 20px;
+  font-family: 'Playfair Display', serif; font-size: 5rem; line-height: 1.05; margin-bottom: 25px;
+  text-shadow: 0 10px 30px rgba(0,0,0,0.3); /* Shadow for pop */
 }
 .text-highlight { color: var(--leaf-green); font-style: italic; }
 
 .hero-desc-agric {
-  font-size: 1.25rem; max-width: 600px; color: #eee; margin-bottom: 40px; font-weight: 300;
+  font-size: 1.3rem; color: #f0f0f0; margin-bottom: 40px; font-weight: 300; line-height: 1.6;
 }
 
 .hero-btn-group { display: flex; gap: 20px; }
 .btn-primary-green {
-  background: var(--leaf-green); color: white; padding: 15px 35px; border-radius: 5px;
-  font-weight: 600; transition: 0.3s;
+  background: var(--leaf-green); color: white; padding: 16px 40px; border-radius: 50px;
+  font-weight: 700; transition: 0.3s; box-shadow: 0 10px 20px rgba(76, 175, 80, 0.3);
 }
 .btn-primary-green:hover { background: #388E3C; transform: translateY(-3px); }
 
 .btn-outline-white {
-  border: 1px solid white; color: white; padding: 15px 35px; border-radius: 5px;
-  font-weight: 600; transition: 0.3s;
+  border: 2px solid rgba(255,255,255,0.5); color: white; padding: 16px 40px; border-radius: 50px;
+  font-weight: 700; transition: 0.3s;
 }
-.btn-outline-white:hover { background: white; color: var(--deep-green); }
+.btn-outline-white:hover { background: white; color: var(--deep-green); border-color: white; }
 
 
-/* --- 2. PROMO SECTION (RICE) --- */
-.promo-section { padding: 80px 0; background: #fff; }
+/* --- 2. PROMO SECTION (PUNCHY!) --- */
+.promo-section { padding: 100px 0; background: #fff; position: relative; overflow: hidden; }
+
+/* Background Pattern */
+.promo-section::before {
+  content: ''; position: absolute; inset: 0; opacity: 0.05;
+  background-image: radial-gradient(#1B4D3E 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
 .promo-card {
-  display: flex; background: #FFF8E1;
-  border-radius: 20px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-  border: 1px solid #FFE082;
+  display: flex; background: #FFF8E1; /* Rice Cream */
+  border-radius: 30px; overflow: hidden; box-shadow: 0 30px 60px rgba(27, 77, 62, 0.15);
+  border: 2px solid #FFE082; position: relative;
 }
 
-.promo-text { flex: 1.2; padding: 60px; }
+.promo-text { flex: 1.2; padding: 80px 60px; position: relative; z-index: 2; }
+
+/* Pulsing Deal Tag */
 .deal-tag { 
-  background: #E53935; color: white; display: inline-block; padding: 5px 10px; 
-  font-weight: bold; font-size: 0.8rem; border-radius: 4px; margin-bottom: 15px;
+  background: #D32F2F; color: white; display: inline-block; padding: 8px 15px; 
+  font-weight: 800; font-size: 0.9rem; border-radius: 6px; margin-bottom: 20px;
+  box-shadow: 0 5px 15px rgba(211, 47, 47, 0.3);
+  animation: pulse-red 2s infinite;
 }
-.promo-text h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: #3E2723; margin-bottom: 15px; }
-.promo-lead { font-size: 1.1rem; color: #5D4037; margin-bottom: 30px; line-height: 1.6; }
+@keyframes pulse-red {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(211, 47, 47, 0.7); }
+  70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(211, 47, 47, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(211, 47, 47, 0); }
+}
 
-.promo-features { list-style: none; margin-bottom: 30px; }
-.promo-features li { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; color: #3E2723; font-weight: 500; }
+.promo-text h2 { font-family: 'Playfair Display', serif; font-size: 3rem; color: #3E2723; margin-bottom: 20px; line-height: 1.1; }
+.promo-lead { font-size: 1.2rem; color: #5D4037; margin-bottom: 40px; line-height: 1.6; }
+
+.promo-features { list-style: none; margin-bottom: 40px; }
+.promo-features li { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; color: #3E2723; font-weight: 600; font-size: 1.05rem; }
 
 .btn-whatsapp {
-  display: inline-flex; align-items: center; gap: 10px;
-  background: #25D366; color: white; padding: 15px 30px; border-radius: 50px;
-  font-weight: bold; font-size: 1rem; transition: 0.3s;
+  display: inline-flex; align-items: center; gap: 12px;
+  background: #25D366; color: white; padding: 18px 40px; border-radius: 50px;
+  font-weight: 800; font-size: 1.1rem; transition: 0.3s;
+  box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
 }
-.btn-whatsapp:hover { background: #128C7E; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4); }
+.btn-whatsapp:hover { background: #128C7E; transform: translateY(-4px); }
 
-.promo-visual {
-  flex: 0.8; position: relative;
-  /* Acts as rice-texture.jpg: appetizing rice grain texture */
-  background-image: url('/images/logos/pile of white rice grains closeup.jpg');
-  background-size: cover; background-position: center;
-  display: flex; align-items: center; justify-content: center; overflow: hidden;
-}
-.rice-bag-img {
-  width: 80%; height: auto; object-fit: contain;
-}
+.promo-visual { flex: 0.8; position: relative; background: white; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.rice-bag-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+.promo-card:hover .rice-bag-img { transform: scale(1.05); }
+
+/* Animated Discount Circle */
 .discount-circle {
-  position: absolute; top: 30px; right: 30px;
-  background: var(--deep-green); color: white; width: 100px; height: 100px;
+  position: absolute; top: 40px; right: 40px;
+  background: var(--deep-green); color: white; width: 120px; height: 120px;
   border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center;
-  font-size: 0.8rem; box-shadow: 0 10px 20px rgba(0,0,0,0.2); animation: pulse 2s infinite;
+  font-size: 0.9rem; box-shadow: 0 10px 25px rgba(0,0,0,0.3); 
+  animation: bounce 3s infinite ease-in-out;
+  border: 4px solid #fff;
 }
-.discount-circle strong { font-size: 1.1rem; }
+@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+.discount-circle strong { font-size: 1.4rem; color: var(--rice-gold); }
 
-/* --- 3. PILLARS --- */
-.pillars-section { padding: 80px 0; background: #fff; }
-.section-header-center { text-align: center; margin-bottom: 60px; }
-.section-header-center h2 { font-size: 2.5rem; color: var(--deep-green); font-family: 'Playfair Display', serif; }
+/* --- 3. PILLARS & STATS (Strict Green) --- */
+.pillars-section { padding: 100px 0; background: var(--off-white); }
+.section-header-center h2 { font-size: 3rem; color: var(--deep-green); }
 
-.pillars-grid { 
-  display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 30px; height: 500px;
-}
-.pillar-card { position: relative; border-radius: 12px; overflow: hidden; }
-.pillar-img { width: 100%; height: 100%; background-size: cover; background-position: center; transition: transform 0.5s; }
-.pillar-card:hover .pillar-img { transform: scale(1.1); }
+.pillar-card { border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+.pillar-content { background: linear-gradient(to top, var(--deep-green), transparent); }
+.link-green { color: var(--leaf-green); text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; }
 
-.pillar-content {
-  position: absolute; bottom: 0; left: 0; width: 100%; padding: 30px;
-  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); color: white;
-}
-.pillar-content h3 { font-size: 1.5rem; margin-bottom: 10px; }
-.link-green { color: var(--leaf-green); font-weight: bold; font-size: 0.9rem; }
+.green-stats { background: var(--deep-green); }
+.stat-num { color: white; }
+.stat-txt { color: rgba(255,255,255,0.7); }
 
-
-/* --- 4. GREEN STATS --- */
-.green-stats { background: var(--deep-green); padding: 80px 0; color: white; }
-.stats-flex { display: flex; justify-content: space-around; text-align: center; }
-.stat-num { font-size: 4rem; font-family: 'Playfair Display', serif; display: block; }
-.stat-txt { font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.8; }
-
-/* Animations */
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
-}
-
-/* RESPONSIVE */
 @media (max-width: 900px) {
-  .hero-title-large { font-size: 3rem; }
+  .hero-title-large { font-size: 3.5rem; }
   .promo-card { flex-direction: column; }
-  .pillars-grid { grid-template-columns: 1fr; height: auto; }
-  .pillar-card { height: 300px; }
-  .stats-flex { flex-direction: column; gap: 40px; }
+  .text-backdrop { padding: 20px; }
 }
 

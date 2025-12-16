@@ -37,6 +37,7 @@ const Home = () => {
               initial={{ opacity: 0, y: 50 }} 
               animate={{ opacity: 1, y: 0 }} 
               transition={{ duration: 1 }}
+              className="text-backdrop"
             >
               <div className="eco-badge">
                 <Leaf size={14} className="spin-leaf"/> <span>Proudly Nigerian Origin</span>
@@ -48,7 +49,7 @@ const Home = () => {
               </h1>
               
               <p className="hero-desc-agric">
-                EG Group is Nigeria’s premier agricultural conglomerate. 
+                EG Group is Nigeria's premier agricultural conglomerate. 
                 We own the entire value chain—from our <strong>4,000-hectare plantations</strong> to your family's table.
               </p>
               

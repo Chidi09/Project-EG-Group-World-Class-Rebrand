@@ -4,7 +4,7 @@
   z-index: 1000;
   background: white;
   box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-  height: 80px;
+  height: 90px;
   display: flex;
   align-items: center;
 }
@@ -21,7 +21,7 @@
   align-items: center;
 }
 .logo-img {
-  height: 50px; /* Adjust based on the image aspect ratio */
+  height: 70px; /* Increased logo size for stronger presence */
   width: auto;
   object-fit: contain;
 }
@@ -85,7 +85,7 @@
   
   .mobile-menu {
     position: absolute;
-    top: 80px;
+    top: 90px;
     left: 0;
     width: 100%;
     background: white;
