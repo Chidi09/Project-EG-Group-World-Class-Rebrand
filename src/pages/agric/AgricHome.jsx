@@ -1,214 +1,147 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Leaf, Droplets, Zap, Anchor, MapPin, X, Info } from 'lucide-react';
+import React, { useRef, useState } from 'react';
+import { ReactLenis } from '@studio-freight/react-lenis';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { Leaf, Droplets, Zap, Anchor, MapPin, Search, ArrowRight, X } from 'lucide-react';
 import './AgricHome.css';
 
-// --- DATA: Feeds & Specs ---
 const products = [
-  {
-    id: 1,
-    category: "Aquaculture",
-    name: "Catfish Premium Start",
-    image: "/images/logos/catfish.jpg",
-    specs: { size: "0.5mm - 1.0mm", protein: "52%", fat: "8%", floatability: "95%" }
-  },
-  {
-    id: 2,
-    category: "Aquaculture",
-    name: "Catfish Grower Feed",
-    image: "/images/logos/catfish.jpg",
-    specs: { size: "4.0mm - 6.0mm", protein: "45%", fat: "6%", floatability: "98%" }
-  },
-  {
-    id: 3,
-    category: "Poultry",
-    name: "EG Poultry Layer Mash",
-    image: "/images/logos/poultry feed.jpg",
-    specs: { type: "Layers", protein: "18%", calcium: "High", energy: "2800 Kcal" }
-  },
-  {
-    id: 4,
-    category: "Poultry",
-    name: "EG Poultry Starter",
-    image: "/images/logos/poultry feed.jpg",
-    specs: { type: "Broiler/Chick", protein: "23%", calcium: "Medium", energy: "3000 Kcal" }
-  }
+  { id: 1, name: "Catfish Premium Start", category: "Aquaculture", protein: "52%", image: "/images/feed-bag.png" },
+  { id: 2, name: "Catfish Grower Feed", category: "Aquaculture", protein: "45%", image: "/images/feed-bag.png" },
+  { id: 3, name: "EG Poultry Layer Mash", category: "Poultry", protein: "18%", image: "/images/feed-bag.png" },
+  { id: 4, name: "EG Poultry Starter", category: "Poultry", protein: "23%", image: "/images/feed-bag.png" }
 ];
 
 const AgricHome = () => {
-  const [activeProduct, setActiveProduct] = useState(null);
+  const targetRef = useRef(null);
+  const { scrollYProgress } = useScroll({ target: targetRef, offset: ["start start", "end start"] });
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+  
+  const [activeProd, setActiveProd] = useState(null);
 
   return (
-    <div className="agric-wrapper">
-      
-      {/* --- 1. HERO: PRECISION FARMING --- */}
-      <section className="agric-hero">
-        <div className="agric-overlay">
-          <div className="hero-badge">EG AGRICULTURE</div>
-          <h1>Cultivating the Future.<br/>Engineered for Yield.</h1>
-          <p>From our 4,000-hectare plantations to our 0% metal residue feed mills. We set the standard.</p>
-          <div className="stats-row">
-            <div className="stat">
-              <span className="num">20k</span>
-              <span className="label">Poultry Capacity</span>
-            </div>
-            <div className="stat">
-              <span className="num">14k</span>
-              <span className="label">Hectares Managed</span>
-            </div>
-            <div className="stat">
-              <span className="num">25T</span>
-              <span className="label">Daily Feed Output</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* --- 2. THE SCIENCE (WHY US) --- */}
-      <section className="science-strip">
-        <div className="container strip-grid">
-          <div className="science-item">
-            <Droplets className="science-icon" />
-            <div>
-              <h4>97.5% Floatability</h4>
-              <p>Our fish feed stays on surface longer.</p>
-            </div>
-          </div>
-          <div className="science-item">
-            <Zap className="science-icon" />
-            <div>
-              <h4>0% Metal Residue</h4>
-              <p>Electromagnetic extraction technology.</p>
-            </div>
-          </div>
-          <div className="science-item">
-            <Leaf className="science-icon" />
-            <div>
-              <h4>100% Organic</h4>
-              <p>Sourced from our own plantations.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* --- 3. PRODUCT LAB (Interactive) --- */}
-      <section className="product-lab">
-        <div className="container">
-          <div className="section-header">
-            <h2>Nutritional Engineering</h2>
-            <p>Select a product to analyze its composition.</p>
-          </div>
-
-          <div className="product-grid">
-            {products.map((prod) => (
-              <div key={prod.id} className="product-card" onClick={() => setActiveProduct(prod)}>
-                <div className="prod-img" style={{ backgroundImage: `url(${prod.image})` }}>
-                  <div className="scan-line"></div>
-                </div>
-                <div className="prod-info">
-                  <span className="category">{prod.category}</span>
-                  <h3>{prod.name}</h3>
-                  <button className="analyze-btn">Analyze Specs</button>
-                </div>
+    <ReactLenis root>
+      <div className="agric-elite-wrapper">
+        
+        {/* --- 1. HERO: NATURE MEETS SCIENCE --- */}
+        <section ref={targetRef} className="agric-hero-elite">
+          <motion.div style={{ y }} className="hero-bg-parallax" />
+          <div className="hero-overlay-gradient"></div>
+          
+          <div className="container hero-content-elite">
+            <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
+              <span className="scrolling-text-bg">YIELD</span>
+              <div className="badge-tech">
+                <span className="pulse-dot"></span> Precision Agriculture
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* --- 4. MACHINERY SHOWCASE (Hotspots) --- */}
-      <section className="machinery-section">
-        <div className="container">
-          <div className="machine-layout">
-            <div className="machine-text">
-              <h4>Engineering Marvel</h4>
-              <h2>EG500F Fish Drier</h2>
-              <p>Designed and fabricated by EG Group. This machine creates hygienic, grit-free dried fish with zero charring.</p>
-              <ul className="specs-list">
-                <li><strong>Capacity:</strong> 500kg / cycle</li>
-                <li><strong>Speed:</strong> Dries in 4 hours</li>
-                <li><strong>Energy:</strong> Charcoal or Sawdust</li>
-                <li><strong>Safety:</strong> Insulated Body</li>
-              </ul>
-            </div>
-            <div className="machine-visual">
-              <div className="machine-blueprint">
-                <img src="/images/logos/drier.jpg" alt="EG500F Fish Drier Machine" />
-                
-                <div className="hotspot" style={{ top: '30%', left: '40%' }}>
-                  <div className="dot"></div>
-                  <div className="pulse"></div>
-                  <div className="tooltip">Thermal Insulation</div>
-                </div>
-
-                <div className="hotspot" style={{ top: '60%', left: '70%' }}>
-                  <div className="dot"></div>
-                  <div className="pulse"></div>
-                  <div className="tooltip">Smoke Filter (1% Emission)</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* --- 5. GLOBAL IMPACT MAP --- */}
-      <section className="impact-section">
-        <div className="container">
-          <h2>Global Knowledge Transfer</h2>
-          <div className="impact-card">
-            <div className="impact-content">
-              <h3><Anchor className="icon-inline"/> Thailand Partnership</h3>
-              <div style={{ marginBottom: '20px' }}>
-                <img src="/images/logos/kaeserat university.jpg" alt="Kasetsart University Partnership" style={{ width: '100%', maxWidth: '600px', borderRadius: '8px', marginBottom: '15px' }} />
-              </div>
-              <p>
-                We execute MOUs with the <strong>Royal Kingdom of Thailand</strong>. 
-                Our staff and local co-operatives train at <strong>Kasetsart University</strong> and 
-                <strong>Prince of Chumphon Fisheries College</strong>.
+              <h1 className="hero-title-tech">
+                Cultivating the <span className="text-outline">Future.</span><br/>
+                Engineered for <span className="text-filled">Yield.</span>
+              </h1>
+              <p className="hero-desc-tech">
+                4,000 Hectares. 0% Metal Residue. 100% Organic. <br/>
+                We don't just farm; we engineer abundance.
               </p>
-              <div className="tags">
-                <span>Shrimp Culture</span>
-                <span>Food Processing</span>
-                <span>Textiles</span>
-              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* --- 2. THE LAB (Science Strip) --- */}
+        <section className="science-lab-section">
+          <div className="container lab-grid">
+            <div className="lab-card">
+              <div className="lab-icon"><Droplets size={32}/></div>
+              <h3>97.5% Floatability</h3>
+              <p>Hydro-dynamic feed technology keeps pellets on surface.</p>
+            </div>
+            <div className="lab-card">
+              <div className="lab-icon"><Zap size={32}/></div>
+              <h3>0% Metal Residue</h3>
+              <p>Electromagnetic extraction ensures pure, safe feed.</p>
+            </div>
+            <div className="lab-card">
+              <div className="lab-icon"><Leaf size={32}/></div>
+              <h3>100% Organic</h3>
+              <p>Sourced directly from our zero-chemical plantations.</p>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* --- PRODUCT SPECS MODAL --- */}
-      {activeProduct && (
-        <div className="specs-modal-backdrop" onClick={() => setActiveProduct(null)}>
-          <div className="specs-card" onClick={(e) => e.stopPropagation()}>
-            <button className="close-specs" onClick={() => setActiveProduct(null)}><X /></button>
-            <div className="specs-header">
-              <h3>{activeProduct.name}</h3>
-              <span>{activeProduct.category}</span>
+        {/* --- 3. PRODUCT SCANNER (Interactive) --- */}
+        <section className="product-scanner-section">
+          <div className="container">
+            <div className="section-head-tech">
+              <h2>Nutritional Engineering</h2>
+              <p>Select a formulation to analyze composition.</p>
             </div>
-            
-            <div className="specs-body">
-              {Object.entries(activeProduct.specs).map(([key, value]) => (
-                <div key={key} className="spec-row">
-                  <span className="spec-label">{key}</span>
-                  <div className="spec-bar-container">
-                    <div className="spec-bar-fill" style={{ width: value.includes('%') ? value : '100%' }}></div>
+
+            <div className="scanner-grid">
+              {products.map((prod) => (
+                <div key={prod.id} className="scan-card" onClick={() => setActiveProd(prod)}>
+                  <div className="scan-visual">
+                    <img src={prod.image} alt={prod.name} />
+                    <div className="scan-laser"></div>
                   </div>
-                  <span className="spec-value">{value}</span>
+                  <div className="scan-info">
+                    <span className="cat-tag">{prod.category}</span>
+                    <h4>{prod.name}</h4>
+                    <button className="scan-btn">Analyze Specs <Search size={14}/></button>
+                  </div>
                 </div>
               ))}
             </div>
-            
-            <Link to="/contact" className="quote-btn" style={{textAlign:'center', display:'block', textDecoration:'none'}}>
-              Request Bulk Quote
-            </Link>
           </div>
-        </div>
-      )}
+        </section>
 
-    </div>
+        {/* --- 4. MACHINE BLUEPRINT --- */}
+        <section className="blueprint-section">
+          <div className="container blueprint-flex">
+            <div className="blueprint-info">
+              <span className="tech-id">MODEL: EG500F</span>
+              <h2>Engineering Marvel:<br/>The Fish Drier</h2>
+              <p>Designed and fabricated by EG Group. This machine creates hygienic, grit-free dried fish with zero charring.</p>
+              
+              <ul className="tech-specs">
+                <li><strong>Capacity:</strong> 500kg / cycle</li>
+                <li><strong>Speed:</strong> 4 Hours Rapid Dry</li>
+                <li><strong>Safety:</strong> Thermal Insulation</li>
+                <li><strong>Emission:</strong> 1% Smoke Filter</li>
+              </ul>
+            </div>
+            <div className="blueprint-visual">
+              <div className="blueprint-paper">
+                <img src="/images/fish-drier.jpg" alt="Machine" className="machine-img"/>
+                <div className="grid-lines"></div>
+                {/* Hotspots */}
+                <div className="hotspot h1"><span>Insulation</span></div>
+                <div className="hotspot h2"><span>Filter</span></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* --- 5. GLOBAL PARTNERSHIP --- */}
+        <section className="global-connect">
+          <div className="container">
+            <div className="connect-card">
+              <div className="connect-content">
+                <h3><Anchor className="icon-gold"/> Thailand Partnership</h3>
+                <p>
+                  Executing MOUs with the <strong>Royal Kingdom of Thailand</strong>. 
+                  Training staff at <strong>Kasetsart University</strong>.
+                </p>
+                <div className="tech-tags">
+                  <span>Shrimp Culture</span>
+                  <span>Food Processing</span>
+                  <span>Textiles</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </ReactLenis>
   );
 };
 
 export default AgricHome;
-

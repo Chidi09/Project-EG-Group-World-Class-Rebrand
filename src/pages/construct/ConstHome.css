@@ -1,155 +1,93 @@
-/* src/pages/construct/ConstHome.css */
-
-/* COLORS */
+/* ELITE CONSTRUCTION STYLES */
 :root {
-  --const-dark: #263238;   /* Slate Grey */
-  --const-accent: #F57F17; /* Safety Orange */
-  --const-light: #ECEFF1;  /* Concrete White */
+  --struct-dark: #212121;
+  --struct-orange: #FF6F00; /* Safety Orange */
+  --struct-grey: #B0BEC5;
 }
+
+.const-elite-wrapper { background: #fff; }
 
 /* HERO */
-.const-hero {
-  height: 85vh;
-  /* Use a dark construction image */
-  background: linear-gradient(rgba(38, 50, 56, 0.85), rgba(38, 50, 56, 0.7)), url('/images/logos/earthmovers.jpg');
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: white;
+.const-hero-elite {
+  height: 90vh; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;
+  background: var(--struct-dark); color: white; text-align: center;
+}
+.hero-bg-blueprint {
+  position: absolute; inset: 0; height: 120%;
+  background-image: url('/images/const-hero-skyline.jpg');
+  background-size: cover; background-position: center; z-index: 0; filter: grayscale(100%);
+}
+.hero-overlay-dark {
+  position: absolute; inset: 0; background: rgba(33, 33, 33, 0.85); z-index: 1;
 }
 
-.brand-tag {
-  color: var(--const-accent);
-  font-weight: 800;
-  letter-spacing: 2px;
-  margin-bottom: 20px;
-  display: inline-block;
-  border-bottom: 2px solid var(--const-accent);
-  padding-bottom: 5px;
+.hero-content-struct { position: relative; z-index: 2; max-width: 800px; }
+.brand-line { width: 4px; height: 60px; background: var(--struct-orange); margin: 0 auto 30px; }
+
+.hero-title-struct {
+  font-family: 'Playfair Display', serif; font-size: 5rem; line-height: 1.1; margin-bottom: 30px; text-transform: uppercase;
 }
+.text-stroke { -webkit-text-stroke: 1px white; color: transparent; }
+.text-solid { color: var(--struct-orange); }
 
-.hero-content h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px; }
-.hero-content p { font-size: 1.2rem; max-width: 600px; margin: 0 auto 40px; opacity: 0.9; }
+.hero-desc-struct { font-size: 1.2rem; color: var(--struct-grey); margin-bottom: 40px; }
 
-.hero-actions { display: flex; gap: 20px; justify-content: center; }
-.hero-actions .btn-primary { background: var(--const-accent); border: none; color: white; padding: 12px 30px; border-radius: 4px; font-weight: 600; cursor: pointer; transition: 0.3s; }
-.hero-actions .btn-primary:hover { background: #E65100; }
-.hero-actions .btn-outline { border: 2px solid white; background: transparent; color: white; padding: 12px 30px; border-radius: 4px; font-weight: 600; cursor: pointer; transition: 0.3s; }
-.hero-actions .btn-outline:hover { background: white; color: var(--const-dark); }
-
-
-/* BLUEPRINT SERVICES */
-.services-section { padding: 80px 0; background: var(--const-dark); color: white; }
-.section-head-dark { text-align: center; margin-bottom: 60px; }
-.section-head-dark h2 { font-size: 2.5rem; }
-.section-head-dark p { color: rgba(255,255,255,0.7); font-size: 1.1rem; }
-
-.blueprint-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
-
-.blueprint-card {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  padding: 40px 30px;
-  position: relative;
-  transition: all 0.3s ease;
-  overflow: hidden;
-  border-radius: 8px;
+.btn-industrial {
+  background: var(--struct-orange); color: white; border: none; padding: 15px 40px;
+  font-weight: bold; text-transform: uppercase; letter-spacing: 2px;
+  display: inline-flex; align-items: center; gap: 10px; transition: 0.3s; cursor: pointer;
 }
+.btn-industrial:hover { background: white; color: black; }
 
-.blueprint-card:hover {
-  background: white;
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+
+/* CAPABILITIES */
+.capabilities-section { padding: 80px 0; background: #fff; margin-top: -80px; position: relative; z-index: 5; }
+.cap-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.cap-card {
+  background: white; padding: 40px 20px; border: 1px solid #eee; text-align: center;
+  transition: 0.3s; cursor: pointer;
 }
-.blueprint-card:hover h3, 
-.blueprint-card:hover p, 
-.blueprint-card:hover .card-icon-box { color: var(--const-dark); }
+.cap-card:hover, .cap-card.active { background: var(--struct-dark); color: white; transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+.cap-icon { color: var(--struct-orange); margin-bottom: 20px; }
+.cap-card h3 { font-size: 1.3rem; margin-bottom: 15px; }
+.cap-card p { font-size: 0.95rem; line-height: 1.6; opacity: 0.8; }
 
-.card-icon-box { color: var(--const-accent); margin-bottom: 20px; transition: 0.3s; }
-.blueprint-card h3 { font-size: 1.3rem; margin-bottom: 10px; transition: 0.3s; }
-.blueprint-card p { opacity: 0.7; font-size: 0.9rem; transition: 0.3s; line-height: 1.6; }
 
-/* Decorative blueprint grid lines */
-.blueprint-lines {
-  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-  background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-  linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-  background-size: 20px 20px;
-  pointer-events: none;
+/* PROJECT SPLIT */
+.featured-project-section { background: #f4f4f4; }
+.project-split { display: flex; height: 600px; }
+.project-visual {
+  flex: 1; background-size: cover; background-position: center; position: relative;
 }
-
-
-/* PROJECT SPOTLIGHT */
-.project-spotlight { display: flex; flex-wrap: wrap; background: #fff; }
-.project-img { flex: 1; min-width: 400px; height: 500px; position: relative; }
-.project-img img { width: 100%; height: 100%; object-fit: cover; }
-.project-badge { 
-  position: absolute; top: 30px; left: 30px; 
-  background: var(--const-accent); color: white; 
-  padding: 5px 15px; font-weight: bold; text-transform: uppercase; font-size: 0.8rem; 
+.project-badge {
+  position: absolute; top: 40px; left: 40px; background: var(--struct-orange); color: white;
+  padding: 5px 15px; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px;
 }
+.project-details { flex: 1; padding: 80px; display: flex; flex-direction: column; justify-content: center; }
+.project-id { font-family: monospace; color: #999; letter-spacing: 2px; display: block; margin-bottom: 10px; }
+.project-details h2 { font-size: 3rem; font-family: 'Playfair Display', serif; margin-bottom: 20px; line-height: 1.1; }
+.project-details p { font-size: 1.1rem; color: #555; margin-bottom: 40px; }
 
-.project-info { flex: 1; min-width: 400px; padding: 60px; display: flex; flex-direction: column; justify-content: center; }
-.project-info h3 { font-size: 2.5rem; color: var(--const-dark); margin-bottom: 20px; }
-.project-desc { font-size: 1.1rem; color: #555; margin-bottom: 30px; line-height: 1.6; }
-
-.project-specs { display: flex; gap: 40px; margin-bottom: 40px; border-top: 1px solid #eee; padding-top: 20px; }
-.spec strong { display: block; font-size: 0.8rem; text-transform: uppercase; color: #999; margin-bottom: 5px; }
-.spec span { font-weight: 600; color: var(--const-dark); font-size: 1.1rem; }
-
-.view-case-btn { 
-  background: none; border: 2px solid var(--const-dark); color: var(--const-dark);
-  padding: 12px 30px; font-weight: 700; cursor: pointer; width: fit-content;
-  display: flex; align-items: center; gap: 10px; transition: 0.3s;
-  border-radius: 4px;
-}
-.view-case-btn:hover { background: var(--const-dark); color: white; }
+.specs-grid { display: flex; gap: 50px; margin-bottom: 40px; border-top: 1px solid #ddd; padding-top: 20px; }
+.spec-box strong { display: block; font-size: 0.8rem; text-transform: uppercase; color: #999; }
+.spec-box span { font-size: 1.2rem; font-weight: bold; color: var(--struct-dark); }
+.btn-outline-dark { border: 2px solid var(--struct-dark); background: transparent; padding: 15px 40px; font-weight: bold; cursor: pointer; transition: 0.3s; color: var(--struct-dark); }
+.btn-outline-dark:hover { background: var(--struct-dark); color: white; }
 
 
-/* GLOBAL MAP */
-.global-eng-section { padding: 80px 0; background: var(--const-light); overflow: hidden; }
-.global-eng-section .container { display: flex; align-items: center; gap: 50px; }
-
-.map-content { flex: 1; }
-.map-content h2 { font-size: 2.5rem; color: var(--const-dark); margin-bottom: 20px; }
-.map-content p { color: #666; font-size: 1.1rem; margin-bottom: 30px; }
-.network-list { margin-top: 30px; display: flex; flex-direction: column; gap: 20px; }
-
-.network-item { display: flex; align-items: center; gap: 15px; background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-.net-icon { color: var(--const-accent); }
-.network-item h4 { margin: 0; font-size: 1rem; color: var(--const-dark); }
-.network-item span { font-size: 0.85rem; color: #777; }
-
-.map-visual { flex: 1; position: relative; height: 400px; }
-.world-map-img { width: 100%; opacity: 0.3; filter: grayscale(100%); }
-
-.pin { width: 12px; height: 12px; background: var(--const-accent); border-radius: 50%; position: absolute; box-shadow: 0 0 0 4px rgba(245, 127, 23, 0.2); animation: pingPulse 2s infinite; }
-.pin-ng { top: 55%; left: 48%; }
-.pin-uk { top: 25%; left: 46%; }
-.pin-thai { top: 45%; left: 75%; }
-
-@keyframes pingPulse { 0%, 100% { box-shadow: 0 0 0 4px rgba(245, 127, 23, 0.2); } 50% { box-shadow: 0 0 0 10px rgba(245, 127, 23, 0); } }
-
-.map-lines { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
-
-
-/* SAFETY BAR */
-.safety-bar { background: var(--const-accent); padding: 20px 0; color: white; }
-.safety-flex { display: flex; justify-content: space-between; align-items: center; }
-.safety-flex h3 { margin: 0; font-size: 1.1rem; font-weight: 700; }
-.badges { display: flex; gap: 20px; }
-.badge { display: flex; align-items: center; gap: 5px; font-weight: 700; background: rgba(0,0,0,0.1); padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; }
+/* GLOBAL NET */
+.global-net-section { padding: 80px 0; background: var(--struct-dark); color: white; text-align: center; }
+.global-net-section h2 { font-size: 2.5rem; margin-bottom: 50px; font-family: 'Playfair Display', serif; }
+.net-list { display: flex; justify-content: center; gap: 50px; margin-top: 40px; }
+.net-item { display: flex; align-items: center; gap: 15px; text-align: left; }
+.net-icon { color: var(--struct-orange); width: 32px; height: 32px; }
+.net-item h4 { margin: 0; font-size: 1.2rem; }
+.net-item span { color: var(--struct-grey); font-size: 0.9rem; }
 
 @media (max-width: 900px) {
-  .global-eng-section .container { flex-direction: column; }
-  .safety-flex { flex-direction: column; gap: 15px; text-align: center; }
-  .hero-content h1 { font-size: 2.5rem; }
-  .project-spotlight { flex-direction: column; }
-  .project-img { height: 300px; min-width: 100%; }
-  .project-info { padding: 40px 20px; }
-  .project-specs { flex-wrap: wrap; gap: 20px; }
+  .hero-title-struct { font-size: 3rem; }
+  .cap-grid { grid-template-columns: 1fr 1fr; }
+  .project-split { flex-direction: column; height: auto; }
+  .project-visual { height: 300px; }
+  .net-list { flex-direction: column; gap: 30px; }
 }
-

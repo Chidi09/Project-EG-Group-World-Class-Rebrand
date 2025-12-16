@@ -1,165 +1,118 @@
-import React from 'react';
-import { HardHat, Truck, Ruler, Home, Globe, ArrowRight, CheckCircle } from 'lucide-react';
+import React, { useRef } from 'react';
+import { ReactLenis } from '@studio-freight/react-lenis';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { Ruler, Home, Truck, HardHat, ArrowRight, Globe } from 'lucide-react';
 import './ConstHome.css';
 
-const services = [
-  {
-    id: 1,
-    title: "Civil Engineering",
-    desc: "Roads, bridges, and land reclamation. From asphalt to interlocking stone paving.",
-    icon: <Ruler size={32} />
-  },
-  {
-    id: 2,
-    title: "Housing Development",
-    desc: "Low cost, medium income, and high-rise commercial developments like Evangel Estate.",
-    icon: <Home size={32} />
-  },
-  {
-    id: 3,
-    title: "Earthworks & Haulage",
-    desc: "Large scale material supply (Stones, Sandcrete) and quarry operations.",
-    icon: <Truck size={32} />
-  },
-  {
-    id: 4,
-    title: "Project Consultancy",
-    desc: "Budget forecasts, CAD layouts, and planning schedules for private & government clients.",
-    icon: <HardHat size={32} />
-  }
-];
-
 const ConstHome = () => {
+  const targetRef = useRef(null);
+  const { scrollYProgress } = useScroll({ target: targetRef, offset: ["start start", "end start"] });
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+
   return (
-    <div className="const-wrapper">
-      
-      {/* --- 1. HERO: ARCHITECTURAL VISION --- */}
-      <section className="const-hero">
-        <div className="hero-content">
-          <div className="brand-tag">EG CONSTRUCTION</div>
-          <h1>Building Nations.<br />Housing Dreams.</h1>
-          <p>We deliver quality projects you can count on. From earthworks in Nigeria to partnerships in the UK and Thailand.</p>
-          <div className="hero-actions">
-            <a href="#projects" className="btn-primary" style={{textDecoration:'none', display:'inline-block', padding:'12px 30px'}}>View Portfolio</a>
-            <a href="#services" className="btn-outline" style={{textDecoration:'none', display:'inline-block', padding:'12px 30px'}}>Our Capabilities</a>
-          </div>
-        </div>
-      </section>
-
-      {/* --- 2. SERVICES (THE BLUEPRINT GRID) --- */}
-      <section id="services" className="services-section">
-        <div className="container">
-          <div className="section-head-dark">
-            <h2>Our Capabilities</h2>
-            <p>From concept to concrete.</p>
-          </div>
-
-          <div className="blueprint-grid">
-            {services.map((svc) => (
-              <div key={svc.id} className="blueprint-card">
-                <div className="card-icon-box">{svc.icon}</div>
-                <h3>{svc.title}</h3>
-                <p>{svc.desc}</p>
-                <div className="blueprint-lines"></div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* --- 3. FEATURED PROJECT (Evangel Estate) --- */}
-      <section id="projects" className="project-spotlight">
-        <div className="project-img">
-          <img src="/images/logos/evangel housing estate .jpg" alt="Evangel Housing Estate" />
-          <div className="project-badge">Featured Project</div>
-        </div>
-        <div className="project-info">
-          <h3>Evangel Housing Estate</h3>
-          <p className="project-desc">
-            A landmark development showcasing our "Fast Track Home Delivery System." 
-            We produced affordable housing within a short timeframe without cost adjustments.
-          </p>
+    <ReactLenis root>
+      <div className="const-elite-wrapper">
+        
+        {/* --- 1. HERO: ARCHITECTURAL VISION --- */}
+        <section ref={targetRef} className="const-hero-elite">
+          <motion.div style={{ y }} className="hero-bg-blueprint" />
+          <div className="hero-overlay-dark"></div>
           
-          <div className="project-specs">
-            <div className="spec">
-              <strong>Type</strong>
-              <span>Residential</span>
-            </div>
-            <div className="spec">
-              <strong>Status</strong>
-              <span>Completed</span>
-            </div>
-            <div className="spec">
-              <strong>Scope</strong>
-              <span>Design & Build</span>
+          <div className="container hero-content-struct">
+            <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1 }}>
+              <div className="brand-line"></div>
+              <h1 className="hero-title-struct">
+                Building <span className="text-stroke">Nations.</span><br/>
+                Housing <span className="text-solid">Dreams.</span>
+              </h1>
+              <p className="hero-desc-struct">
+                We don't just build structures; we engineer legacies. 
+                From complex earthworks to high-rise developments.
+              </p>
+              <button className="btn-industrial">View Portfolio <ArrowRight size={18}/></button>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* --- 2. CAPABILITIES (Drafting Table) --- */}
+        <section className="capabilities-section">
+          <div className="container">
+            <div className="cap-grid">
+              <div className="cap-card">
+                <Ruler size={40} className="cap-icon"/>
+                <h3>Civil Engineering</h3>
+                <p>Roads, bridges, land reclamation. From asphalt to interlocking stone.</p>
+              </div>
+              <div className="cap-card active">
+                <Home size={40} className="cap-icon"/>
+                <h3>Housing Development</h3>
+                <p>High-rise, low cost, and commercial estates like Evangel.</p>
+              </div>
+              <div className="cap-card">
+                <Truck size={40} className="cap-icon"/>
+                <h3>Earthworks</h3>
+                <p>Large scale material supply and quarry operations.</p>
+              </div>
+              <div className="cap-card">
+                <HardHat size={40} className="cap-icon"/>
+                <h3>Consultancy</h3>
+                <p>CAD layouts, planning schedules, and budget forecasts.</p>
+              </div>
             </div>
           </div>
+        </section>
 
-          <button className="view-case-btn">View Case Study <ArrowRight size={18} /></button>
-        </div>
-      </section>
+        {/* --- 3. FEATURED PROJECT (Slider Style) --- */}
+        <section className="featured-project-section">
+          <div className="project-split">
+            <div className="project-visual" style={{backgroundImage: "url('/images/evangel-estate.jpg')"}}>
+              <div className="project-badge">FEATURED CASE STUDY</div>
+            </div>
+            <div className="project-details">
+              <span className="project-id">RESIDENTIAL // 001</span>
+              <h2>Evangel Housing Estate</h2>
+              <p>A landmark development showcasing our "Fast Track Home Delivery System." We produced affordable housing within a short timeframe without cost adjustments.</p>
+              
+              <div className="specs-grid">
+                <div className="spec-box">
+                  <strong>Status</strong>
+                  <span>Completed</span>
+                </div>
+                <div className="spec-box">
+                  <strong>Scope</strong>
+                  <span>Design & Build</span>
+                </div>
+              </div>
+              
+              <button className="btn-outline-dark">Read Case Study</button>
+            </div>
+          </div>
+        </section>
 
-      {/* --- 4. GLOBAL NETWORK MAP --- */}
-      <section className="global-eng-section">
-        <div className="container">
-          <div className="map-content">
+        {/* --- 4. GLOBAL NETWORK (Dark Map) --- */}
+        <section className="global-net-section">
+          <div className="container">
             <h2>Global Engineering Network</h2>
-            <p>We operate in Nigeria with active technical partners across the globe.</p>
-            
-            <div className="network-list">
-              <div className="network-item">
-                <Globe className="net-icon" />
-                <div>
-                  <h4>United Kingdom</h4>
-                  <span>Technical Partners</span>
-                </div>
+            <div className="net-list">
+              <div className="net-item">
+                <Globe className="net-icon"/> 
+                <div><h4>UK</h4><span>Technical Partners</span></div>
               </div>
-              <div className="network-item">
-                <Globe className="net-icon" />
-                <div>
-                  <h4>Thailand</h4>
-                  <span>Training & Development</span>
-                </div>
+              <div className="net-item">
+                <Globe className="net-icon"/> 
+                <div><h4>Thailand</h4><span>Training</span></div>
               </div>
-              <div className="network-item">
-                <Globe className="net-icon" />
-                <div>
-                  <h4>Ireland</h4>
-                  <span>Supply Chain</span>
-                </div>
+              <div className="net-item">
+                <Globe className="net-icon"/> 
+                <div><h4>Ireland</h4><span>Supply Chain</span></div>
               </div>
             </div>
           </div>
-          
-          {/* Visual abstract map */}
-          <div className="map-visual">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/World_map_blank_without_borders.svg/2000px-World_map_blank_without_borders.svg.png" className="world-map-img" alt="World Map" />
-            <div className="pin pin-ng"></div>
-            <div className="pin pin-uk"></div>
-            <div className="pin pin-thai"></div>
-            {/* Connecting lines drawn via CSS */}
-            <svg className="map-lines">
-              <line x1="48%" y1="55%" x2="46%" y2="25%" stroke="#F57F17" strokeWidth="2" strokeDasharray="5" />
-              <line x1="48%" y1="55%" x2="75%" y2="45%" stroke="#F57F17" strokeWidth="2" strokeDasharray="5" />
-            </svg>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      {/* --- 5. SAFETY & INTEGRITY --- */}
-      <section className="safety-bar">
-        <div className="container safety-flex">
-          <h3>Integrity is the foundation of all we do.</h3>
-          <div className="badges">
-            <span className="badge"><CheckCircle size={16}/> ISO Standards</span>
-            <span className="badge"><CheckCircle size={16}/> Safety First</span>
-          </div>
-        </div>
-      </section>
-
-    </div>
+      </div>
+    </ReactLenis>
   );
 };
 
 export default ConstHome;
-

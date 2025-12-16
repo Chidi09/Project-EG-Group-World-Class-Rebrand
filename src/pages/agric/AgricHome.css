@@ -1,170 +1,131 @@
-/* src/pages/agric/AgricHome.css */
-
-/* COLORS */
+/* ELITE AGRIC STYLES */
 :root {
-  --agric-primary: #4CAF50;
-  --agric-dark: #1B5E20;
-  --agric-light: #E8F5E9;
-  --tech-blue: #2196F3;
+  --tech-green: #1B4D3E;
+  --tech-lime: #CDDC39;
+  --tech-white: #ffffff;
 }
+
+.agric-elite-wrapper { background: #f4f4f4; overflow-x: hidden; }
 
 /* HERO */
-.agric-hero {
-  height: 85vh;
-  background: url('/images/logos/4000 acres.jpg') center/cover;
-  position: relative;
-  color: white;
-  display: flex;
-  align-items: center;
+.agric-hero-elite {
+  height: 90vh; position: relative; overflow: hidden; display: flex; align-items: center;
+  background: #000; color: white;
+}
+.hero-bg-parallax {
+  position: absolute; inset: 0; height: 120%;
+  background-image: url('/images/agric-hero-modern.jpg');
+  background-size: cover; background-position: center; z-index: 0;
+}
+.hero-overlay-gradient {
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.3));
+  z-index: 1;
 }
 
-.agric-overlay {
-  background: linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 100%);
-  width: 100%;
-  height: 100%;
-  padding: 0 10%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.hero-content-elite { position: relative; z-index: 2; padding-left: 5%; }
+.hero-content-elite > div { position: relative; }
+.scrolling-text-bg {
+  position: absolute; font-size: 15rem; font-weight: 900; color: rgba(255,255,255,0.03);
+  top: 50%; left: 0; transform: translateY(-50%); z-index: 0; pointer-events: none;
+  font-family: 'Playfair Display', serif; line-height: 1; white-space: nowrap;
+}
+.hero-content-elite .badge-tech,
+.hero-content-elite .hero-title-tech,
+.hero-content-elite .hero-desc-tech {
+  position: relative; z-index: 1;
 }
 
-.hero-badge {
-  background: var(--agric-primary);
-  display: inline-block;
-  padding: 5px 15px;
-  font-weight: bold;
-  font-size: 0.8rem;
-  margin-bottom: 20px;
-  width: fit-content;
+.badge-tech {
+  display: inline-flex; align-items: center; gap: 10px;
+  border: 1px solid var(--tech-lime); color: var(--tech-lime);
+  padding: 8px 15px; border-radius: 4px; font-family: 'Inter', sans-serif;
+  text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; margin-bottom: 25px;
 }
+.pulse-dot { width: 8px; height: 8px; background: var(--tech-lime); border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.2); } }
 
-.agric-hero h1 { font-size: 4rem; margin-bottom: 20px; line-height: 1.1; }
-.agric-hero p { font-size: 1.2rem; max-width: 600px; opacity: 0.9; margin-bottom: 40px; }
-
-.stats-row { display: flex; gap: 50px; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 30px; }
-.stat .num { display: block; font-size: 2.5rem; font-weight: 700; color: var(--agric-primary); }
-.stat .label { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
-
-/* SCIENCE STRIP */
-.science-strip { background: var(--agric-dark); color: white; padding: 40px 0; }
-.strip-grid { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; }
-.science-item { display: flex; align-items: center; gap: 15px; }
-.science-icon { color: var(--agric-primary); width: 40px; height: 40px; }
-.science-item h4 { font-size: 1.2rem; margin: 0; }
-.science-item p { font-size: 0.9rem; opacity: 0.7; margin: 0; }
-
-/* PRODUCT LAB */
-.product-lab { padding: 80px 0; background: #f8f9fa; }
-.section-header { text-align: center; margin-bottom: 50px; }
-.section-header h2 { font-size: 2.5rem; color: var(--eg-dark); margin-bottom: 10px; }
-.section-header p { color: #666; font-size: 1.1rem; }
-.product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-
-.product-card {
-  background: white;
-  border-radius: 10px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.3s;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+.hero-title-tech {
+  font-family: 'Playfair Display', serif; font-size: 5rem; line-height: 1; margin-bottom: 30px;
 }
-.product-card:hover { transform: translateY(-10px); }
+.text-outline { -webkit-text-stroke: 1px white; color: transparent; }
+.text-filled { color: var(--tech-lime); }
 
-.prod-img { height: 220px; background-size: cover; background-position: center; position: relative; }
-.scan-line {
+.hero-desc-tech { font-size: 1.2rem; max-width: 500px; opacity: 0.8; line-height: 1.6; border-left: 3px solid var(--tech-lime); padding-left: 20px; }
+
+/* LAB SECTION */
+.science-lab-section { padding: 60px 0; background: var(--tech-green); color: white; margin-top: -50px; position: relative; z-index: 5; }
+.lab-grid { display: flex; justify-content: space-around; text-align: center; }
+.lab-card { padding: 20px; transition: 0.3s; }
+.lab-card:hover { transform: translateY(-10px); }
+.lab-icon { color: var(--tech-lime); margin-bottom: 15px; }
+.lab-card h3 { font-size: 1.4rem; margin-bottom: 10px; }
+.lab-card p { opacity: 0.7; font-size: 0.9rem; max-width: 250px; margin: 0 auto; }
+
+/* SCANNER */
+.product-scanner-section { padding: 100px 0; background: #fff; }
+.section-head-tech { text-align: center; margin-bottom: 50px; }
+.section-head-tech h2 { font-size: 3rem; color: var(--tech-green); font-family: 'Playfair Display', serif; margin-bottom: 10px; }
+.section-head-tech p { color: #666; font-size: 1.1rem; }
+.scanner-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-top: 50px; }
+
+.scan-card { background: #f9f9f9; border: 1px solid #eee; cursor: pointer; transition: 0.3s; position: relative; overflow: hidden; }
+.scan-card:hover { border-color: var(--tech-green); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+.scan-visual { height: 250px; display: flex; align-items: center; justify-content: center; position: relative; background: white; }
+.scan-visual img { width: 60%; transition: 0.3s; }
+.scan-card:hover img { transform: scale(1.1); }
+
+.scan-laser {
   position: absolute; top: 0; left: 0; width: 100%; height: 2px;
-  background: rgba(76, 175, 80, 0.8);
-  box-shadow: 0 0 10px var(--agric-primary);
-  animation: scan 3s infinite linear;
-  display: none;
+  background: red; box-shadow: 0 0 10px red; opacity: 0;
 }
-.product-card:hover .scan-line { display: block; }
+.scan-card:hover .scan-laser { opacity: 1; animation: scanDown 1.5s infinite linear; }
+@keyframes scanDown { 0% { top: 0; } 100% { top: 100%; } }
 
-@keyframes scan { 0% { top: 0; } 100% { top: 100%; } }
+.scan-info { padding: 25px; text-align: center; }
+.cat-tag { font-size: 0.7rem; text-transform: uppercase; color: #999; letter-spacing: 1px; }
+.scan-info h4 { font-size: 1.2rem; margin: 10px 0; color: var(--tech-green); }
+.scan-btn { background: transparent; border: 1px solid #ccc; padding: 8px 20px; font-size: 0.8rem; border-radius: 20px; }
 
-.prod-info { padding: 20px; }
-.category { font-size: 0.8rem; color: #999; text-transform: uppercase; }
-.prod-info h3 { margin: 5px 0 15px; font-size: 1.3rem; }
-.analyze-btn {
-  background: transparent; border: 1px solid var(--agric-primary); color: var(--agric-primary);
-  padding: 8px 15px; border-radius: 5px; font-weight: 600; width: 100%; transition: 0.3s;
+/* BLUEPRINT */
+.blueprint-section { padding: 100px 0; background: #263238; color: white; overflow: hidden; }
+.blueprint-flex { display: flex; gap: 60px; align-items: center; }
+.tech-id { font-family: monospace; color: var(--tech-lime); letter-spacing: 2px; }
+.blueprint-info h2 { font-size: 3.5rem; font-family: 'Playfair Display', serif; margin: 10px 0 30px; line-height: 1.1; }
+
+.blueprint-paper {
+  position: relative; border: 2px solid rgba(255,255,255,0.2); padding: 10px;
+  background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
 }
-.product-card:hover .analyze-btn { background: var(--agric-primary); color: white; }
-
-/* MACHINERY */
-.machinery-section { padding: 80px 0; background: white; }
-.machine-layout { display: flex; align-items: center; gap: 50px; }
-.machine-text { flex: 1; }
-.machine-visual { flex: 1; position: relative; }
-
-.machine-text h4 { color: #999; text-transform: uppercase; margin-bottom: 10px; }
-.specs-list { margin-top: 20px; list-style: none; }
-.specs-list li { padding: 10px 0; border-bottom: 1px solid #eee; }
-
-.machine-blueprint { position: relative; border: 5px solid var(--eg-light); border-radius: 10px; overflow: hidden; }
-.machine-blueprint img { width: 100%; display: block; filter: grayscale(100%) contrast(1.2); }
-
-.hotspot { position: absolute; cursor: pointer; }
-.dot { width: 12px; height: 12px; background: var(--const-accent); border-radius: 50%; position: relative; z-index: 2; }
-.pulse {
-  position: absolute; top: -4px; left: -4px; width: 20px; height: 20px;
-  border: 2px solid var(--const-accent); border-radius: 50%;
-  animation: pulse 2s infinite;
+.machine-img { width: 100%; filter: grayscale(100%) contrast(1.2); }
+.hotspot {
+  position: absolute; width: 15px; height: 15px; background: var(--tech-lime);
+  border-radius: 50%; box-shadow: 0 0 0 5px rgba(205, 220, 57, 0.3);
+  cursor: pointer; transition: 0.3s;
 }
-.tooltip {
+.hotspot:hover { transform: scale(1.5); }
+.hotspot span {
   position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
-  background: black; color: white; padding: 5px 10px; font-size: 0.8rem;
-  white-space: nowrap; opacity: 0; transition: 0.3s; pointer-events: none;
+  background: rgba(0,0,0,0.8); color: white; padding: 5px 10px;
+  font-size: 0.8rem; white-space: nowrap; opacity: 0; transition: 0.3s; pointer-events: none;
 }
-.hotspot:hover .tooltip { opacity: 1; bottom: 25px; }
+.hotspot:hover span { opacity: 1; bottom: 25px; }
+.h1 { top: 30%; left: 40%; }
+.h2 { top: 60%; left: 70%; }
 
-@keyframes pulse { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(3); opacity: 0; } }
+/* PARTNERSHIP */
+.global-connect { padding: 80px 0; background: var(--tech-green); text-align: center; }
+.connect-card { background: white; padding: 50px; max-width: 800px; margin: 0 auto; border-radius: 10px; }
+.icon-gold { color: #D4AF37; margin-right: 10px; }
+.connect-content h3 { font-size: 1.8rem; margin-bottom: 20px; color: var(--tech-green); }
+.connect-content p { color: #555; font-size: 1.1rem; line-height: 1.6; margin-bottom: 20px; }
+.tech-tags { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.tech-tags span { background: #eee; padding: 5px 15px; border-radius: 20px; margin: 0 5px; font-size: 0.8rem; font-weight: bold; color: #555; }
 
-/* MODAL */
-.specs-modal-backdrop {
-  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(0,0,0,0.8); z-index: 2000;
-  display: flex; align-items: center; justify-content: center;
+@media (max-width: 900px) {
+  .hero-title-tech { font-size: 3rem; }
+  .lab-grid { flex-direction: column; gap: 30px; }
+  .blueprint-flex { flex-direction: column; }
 }
-.specs-card {
-  background: white; width: 400px; padding: 30px; border-radius: 10px; position: relative;
-  box-shadow: 0 0 50px rgba(76, 175, 80, 0.2);
-}
-.close-specs { position: absolute; top: 15px; right: 15px; background: none; border: none; cursor: pointer; }
-.specs-header { margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
-.specs-header h3 { margin: 0; font-size: 1.5rem; }
-.specs-header span { color: #999; font-size: 0.9rem; }
-.spec-row { display: flex; align-items: center; margin-bottom: 15px; font-size: 0.9rem; }
-.spec-label { width: 80px; font-weight: 600; color: #555; text-transform: capitalize; }
-.spec-bar-container { flex: 1; height: 8px; background: #eee; border-radius: 4px; margin: 0 15px; overflow: hidden; }
-.spec-bar-fill { height: 100%; background: var(--agric-primary); }
-.spec-value { min-width: 80px; text-align: right; font-weight: 600; }
-.quote-btn { 
-  background: var(--eg-dark); color: white; border: none; width: 100%; padding: 12px; 
-  border-radius: 5px; margin-top: 20px; font-weight: bold; cursor: pointer; 
-  display: block; text-align: center;
-}
-.quote-btn:hover { background: var(--eg-green); }
-
-/* IMPACT */
-.impact-section { padding: 80px 0; background: var(--eg-light); text-align: center; }
-.impact-section h2 { font-size: 2.5rem; margin-bottom: 40px; }
-.impact-card { 
-  background: white; max-width: 800px; margin: 0 auto; padding: 40px; 
-  border-radius: 10px; border-top: 4px solid var(--tech-blue);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-}
-.impact-content { text-align: left; }
-.icon-inline { vertical-align: middle; margin-right: 10px; color: var(--tech-blue); }
-.impact-content h3 { font-size: 1.8rem; margin-bottom: 20px; }
-.impact-content p { font-size: 1.1rem; line-height: 1.8; color: #444; }
-.tags { margin-top: 20px; display: flex; gap: 10px; }
-.tags span { background: #E3F2FD; color: var(--tech-blue); padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; font-weight: 600; }
-
-@media (max-width: 768px) {
-  .agric-hero h1 { font-size: 2.5rem; }
-  .machine-layout { flex-direction: column; }
-  .stats-row { flex-wrap: wrap; gap: 20px; }
-  .specs-card { width: 90%; max-width: 400px; }
-}
-
