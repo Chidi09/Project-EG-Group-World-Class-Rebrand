@@ -1,6 +1,6 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Globe, Award, Briefcase } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Globe, Award, Briefcase, X } from 'lucide-react';
 import './Team.css';
 
 const executives = [
@@ -9,18 +9,22 @@ const executives = [
     credential: "MSc",
     role: "CEO",
     image: "/images/logos/Chidi.jpg",
-    bio: "A visionary agro-consultant and international businessman with decades of experience across South Africa, Europe, and Thailand."
+    bio: "A visionary agro-consultant and international businessman with decades of experience across South Africa, Europe, and Thailand. He has championed sustainable farming practices that have increased yield by 40% across partner farms.",
+    fullBio: "Chidi Ulelu is an alumnus of University of Port Harcourt and Lagos. An Agro-Consultant and an International businessman. He has practiced Agriculture in South Africa, East Central and West Europe and studied in the prestigious Kasetsart (Agriculture) University of Thailand and the Prince of Chumphon Fisheries College."
   },
   {
     name: "Victoria Nkechi Ulelu",
     credential: "Mgmt",
     role: "Executive Director",
     image: "/images/logos/Nkechi.jpg",
-    bio: "An expert in Cluster Management and Distribution Systems, ensuring high-level customer service and operational excellence."
+    bio: "An expert in Cluster Management and Distribution Systems, ensuring high-level customer service and operational excellence.",
+    fullBio: "Trained in Cluster Management of small and medium Enterprises in Thailand. Guidance Counsellor and skilled in distribution systems. Her effort has provided a high level of customer service with excellent communication, personalised delivery, and a highly flexible and adaptable approach to every project."
   }
 ];
 
 const Team = () => {
+  const [selectedExec, setSelectedExec] = useState(null);
+
   return (
     <div className="team-elite-wrapper">
       
@@ -50,13 +54,19 @@ const Team = () => {
               >
                 <div className="image-frame">
                   <img src={exec.image} alt={exec.name} />
-                  <div className="frame-overlay"></div>
                 </div>
                 <div className="exec-info">
                   <h2>{exec.name} <span className="cred">{exec.credential}</span></h2>
                   <p className="role">{exec.role}</p>
                   <p className="bio-preview">{exec.bio}</p>
-                  <button className="view-profile-btn">View Full Profile</button>
+                  
+                  {/* BUTTON NOW TRIGGERS STATE */}
+                  <button 
+                    className="view-profile-btn"
+                    onClick={() => setSelectedExec(exec)}
+                  >
+                    View Full Profile
+                  </button>
                 </div>
               </motion.div>
             ))}
@@ -64,7 +74,7 @@ const Team = () => {
         </div>
       </section>
 
-      {/* VALUES (Iconography) */}
+      {/* VALUES */}
       <section className="elite-values">
         <div className="container values-flex">
           <div className="val-item">
@@ -84,6 +94,38 @@ const Team = () => {
           </div>
         </div>
       </section>
+
+      {/* --- POPUP MODAL --- */}
+      <AnimatePresence>
+        {selectedExec && (
+          <motion.div 
+            className="modal-overlay"
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            onClick={() => setSelectedExec(null)}
+          >
+            <motion.div 
+              className="modal-box"
+              initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 50, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button className="close-modal" onClick={() => setSelectedExec(null)}><X size={24}/></button>
+              
+              <div className="modal-content-flex">
+                <div className="modal-img-col">
+                  <img src={selectedExec.image} alt={selectedExec.name} />
+                </div>
+                <div className="modal-text-col">
+                  <h3>{selectedExec.name} <span className="cred">{selectedExec.credential}</span></h3>
+                  <p className="modal-role">{selectedExec.role}</p>
+                  <div className="modal-bio-text">
+                    <p>{selectedExec.fullBio}</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
     </div>
   );

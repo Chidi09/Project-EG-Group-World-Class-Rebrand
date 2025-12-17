@@ -1,143 +1,193 @@
-import React, { useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ReactLenis } from '@studio-freight/react-lenis';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import CountUp from 'react-countup';
 import { useInView } from 'react-intersection-observer';
-import { ArrowRight, Leaf, ShoppingBag, TrendingUp } from 'lucide-react';
+import { ArrowRight, Leaf, Hammer, Globe, TrendingUp, Users, ShieldCheck } from 'lucide-react';
 import './Home.css';
 
+// --- HERO SLIDES DATA ---
+const slides = [
+  {
+    id: 1,
+    theme: 'agric',
+    image: '/images/hero-agric.jpg', // Ensure this exists
+    badge: 'Food Security',
+    icon: <Leaf size={14} className="spin-icon"/>,
+    title: <>Cultivating <br/><span className="text-highlight">Abundance.</span></>,
+    desc: "We are the architects of Nigeria's food future. Through precision agronomy and mechanized processing, we transform 4,000 hectares of raw potential into sustainable nourishment for millions.",
+    ctaLink: '/services',
+    ctaText: 'Explore Our Farms'
+  },
+  {
+    id: 2,
+    theme: 'const',
+    image: '/images/const-hero-skyline.jpg', // Ensure this exists
+    badge: 'Infrastructure',
+    icon: <Hammer size={14} className="spin-icon"/>,
+    title: <>Building <br/><span className="text-highlight gold">Legacies.</span></>,
+    desc: "From complex civil engineering to master-planned communities. We blend structural integrity with eco-conscious design to build the skylines of tomorrow.",
+    ctaLink: '/services',
+    ctaText: 'View Projects'
+  },
+  {
+    id: 3,
+    theme: 'corp',
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=80', // Corporate Skyline
+    badge: 'Global Vision',
+    icon: <Globe size={14} className="spin-icon"/>,
+    title: <>Redefining <br/><span className="text-highlight blue">Standards.</span></>,
+    desc: "A diversified conglomerate moving from words to action. We leverage global partnerships and local expertise to drive economic growth and industrial excellence.",
+    ctaLink: '/about',
+    ctaText: 'Our Story'
+  }
+];
+
 const Home = () => {
+  const [current, setCurrent] = useState(0);
   const { ref: statsRef, inView: statsInView } = useInView({ triggerOnce: true, threshold: 0.5 });
-  const targetRef = useRef(null);
-  const { scrollYProgress } = useScroll({ target: targetRef, offset: ['start start', 'end start'] });
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
+
+  // Auto-Slide Logic (5 Seconds)
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % slides.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <ReactLenis root>
       <div className="home-wrapper">
         
-        {/* --- 1. THE \"ALIVE\" HERO --- */}
-        <section ref={targetRef} className="agric-hero-section">
-          {/* Ken Burns Effect Background */}
-          <div className="ken-burns-container">
-            <motion.div style={{ y }} className="hero-bg-img" />
-            <div className="hero-overlay"></div>
-            
-            {/* Floating Particles Effect (CSS Animation) */}
-            <div className="particles-container">
-              <div className="particle p1"></div>
-              <div className="particle p2"></div>
-              <div className="particle p3"></div>
-            </div>
-          </div>
-
-          <div className="container hero-content-agric">
+        {/* --- 1. DYNAMIC HERO SECTION --- */}
+        <section className="hero-section-dynamic">
+          <AnimatePresence mode='wait'>
             <motion.div 
-              initial={{ opacity: 0, y: 50 }} 
-              animate={{ opacity: 1, y: 0 }} 
+              key={current}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
               transition={{ duration: 1 }}
-              className="text-backdrop"
+              className="hero-bg-layer"
+              style={{ backgroundImage: `url('${slides[current].image}')` }}
             >
-              <div className="eco-badge">
-                <Leaf size={14} className="spin-leaf"/> <span>Proudly Nigerian Origin</span>
-              </div>
-              
-              <h1 className="hero-title-large">
-                Cultivating <br/>
-                <span className="text-highlight">Abundance.</span>
-              </h1>
-              
-              <p className="hero-desc-agric">
-                EG Group is Nigeria's premier agricultural conglomerate. 
-                We own the entire value chain—from our <strong>4,000-hectare plantations</strong> to your family's table.
-              </p>
-              
-              <div className="hero-btn-group">
-                <Link to="/agriculture" className="btn-primary-green">
-                  Explore Our Farms
-                </Link>
-                <Link to="/contact" className="btn-outline-white">
-                  Partner With Us
-                </Link>
-              </div>
+              <div className={`hero-overlay ${slides[current].theme}`}></div>
             </motion.div>
+          </AnimatePresence>
+
+          <div className="container hero-content-layer">
+            <AnimatePresence mode='wait'>
+              <motion.div 
+                key={current}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -30 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="hero-text-block"
+              >
+                {/* Dynamic Badge */}
+                <div className="hero-badge">
+                  {slides[current].icon} <span>{slides[current].badge}</span>
+                </div>
+
+                {/* Dynamic Title */}
+                <h1 className="hero-title-main">
+                  {slides[current].title}
+                </h1>
+
+                {/* Dynamic Description */}
+                <p className="hero-desc-main">
+                  {slides[current].desc}
+                </p>
+
+                {/* Buttons */}
+                <div className="hero-btn-group">
+                  <Link to={slides[current].ctaLink} className="btn-primary-dynamic">
+                    {slides[current].ctaText}
+                  </Link>
+                  <Link to="/contact" className="btn-outline-dynamic">
+                    Partner With Us
+                  </Link>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+            
+            {/* Slider Dots */}
+            <div className="slider-dots">
+              {slides.map((_, idx) => (
+                <button 
+                  key={idx} 
+                  className={`dot ${current === idx ? 'active' : ''}`}
+                  onClick={() => setCurrent(idx)}
+                />
+              ))}
+            </div>
           </div>
         </section>
 
-        {/* --- 2. THE \"GOLDEN HARVEST\" PROMO (Rice Offer) --- */}
+        {/* --- 2. THE "GOLDEN HARVEST" PROMO (Rice Offer) --- */}
         <section className="promo-section">
           <div className="container">
             <div className="promo-card">
               <div className="promo-text">
-                <div className="deal-tag">LIMITED OFFER</div>
+                <div className="deal-tag">MARKET ALERT</div>
                 <h2>EG Premium Tomato Rice</h2>
                 <p className="promo-lead">
-                  We are moving <strong>100,000 Bags</strong> in the next 21 days. 
-                  Secure your stock of Nigeria's finest, stone-free, premium rice.
+                  <strong>Food security is national security.</strong> We are releasing 100,000 bags of premium, stone-free rice to the market. 
+                  This is part of our commitment to stabilizing local food prices while maintaining export-grade quality.
                 </p>
                 
                 <ul className="promo-features">
-                  <li><ShoppingBag size={18}/> <strong>50kg Bags:</strong> ₦60,000 (Delivery) / ₦56,000 (Pickup)</li>
-                  <li><TrendingUp size={18}/> <strong>Bulk Order:</strong> Minimum 750 Bags (1 Truck)</li>
-                  <li><Leaf size={18}/> <strong>Varieties:</strong> 50kg, 25kg, 10kg Branding Available</li>
+                  <li><strong>Wholesale:</strong> 50kg Bags @ ₦60,000 (Nationwide Delivery)</li>
+                  <li><strong>Bulk Logic:</strong> Minimum Order Quantity (MOQ) of 750 Bags (1 Truck)</li>
+                  <li><strong>Customization:</strong> White-label branding available for corporate partners.</li>
                 </ul>
 
                 <a href="https://wa.me/2348039227191" className="btn-whatsapp">
-                  Order on WhatsApp (0803 922 7191) <ArrowRight size={18} />
+                  Secure Allocation (WhatsApp) <ArrowRight size={18} />
                 </a>
               </div>
-              
-              {/* Product Visual */}
               <div className="promo-visual">
-                <img src="/images/logos/promo image.png" alt="EG Rice Bags" className="rice-bag-img" />
+                <img src="/images/Gemini_Generated_Image_sqco47sqco47sqco.jpg" alt="EG Rice Bags" className="rice-bag-img" />
                 <div className="discount-circle">
-                  <span>Direct</span>
-                  <strong>Factory</strong>
-                  <span>Price</span>
+                  <span>Factory</span>
+                  <strong>Direct</strong>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* --- 3. CORE PILLARS (Agric First) --- */}
-        <section className="pillars-section">
+        {/* --- 3. GLOBAL IMPACT (New "Intellectual" Section) --- */}
+        <section className="impact-section-new">
           <div className="container">
-            <div className="section-header-center">
-              <h2>Our Expertise</h2>
-              <p>Rooted in Agriculture. Expanded by Construction.</p>
+            <div className="section-head-center">
+              <span className="sub-tag">Our Contribution</span>
+              <h2>Engineering A Better Future</h2>
+              <p>We don't just operate businesses; we build ecosystems. Our integrated approach ensures that every project contributes to the triple bottom line: People, Planet, and Profit.</p>
             </div>
 
-            <div className="pillars-grid">
-              {/* Card 1: AGRICULTURE (Featured) */}
-              <div className="pillar-card main-pillar">
-                <div className="pillar-img" style={{backgroundImage: "url('/images/logos/rice farm.jpg')"}}></div>
-                <div className="pillar-content">
-                  <h3>EG Agriculture</h3>
-                  <p>Poultry, Fishery, Palm Oil, and Rice Production on a massive scale.</p>
-                  <Link to="/agriculture" className="link-green">View Products &rarr;</Link>
-                </div>
+            <div className="impact-grid">
+              <div className="impact-card">
+                <TrendingUp size={40} className="impact-icon green"/>
+                <h3>Economic Resilience</h3>
+                <p>By localizing production chains—from palm oil processing to feed milling—we reduce Nigeria's reliance on imports, strengthening the Naira and boosting local GDP.</p>
               </div>
-
-              {/* Card 2: CONSTRUCTION */}
-              <div className="pillar-card sub-pillar">
-                <div className="pillar-img" style={{backgroundImage: "url('/images/logos/green eco friendly building architecture.jpg')"}}></div>
-                <div className="pillar-content">
-                  <h3>EG Construction</h3>
-                  <p>Eco-friendly housing and infrastructure development.</p>
-                  <Link to="/construction" className="link-green">View Projects &rarr;</Link>
-                </div>
+              <div className="impact-card">
+                <Leaf size={40} className="impact-icon gold"/>
+                <h3>Sustainable Nature</h3>
+                <p>Our "Zero-Waste" agricultural policy ensures that by-products from our farms power our mills. We practice regenerative farming to preserve soil health for the next generation.</p>
               </div>
-
-              {/* Card 3: MEDIA */}
-              <div className="pillar-card sub-pillar">
-                <div className="pillar-img" style={{backgroundImage: "url('/images/logos/farmland image.jpg')"}}></div>
-                <div className="pillar-content">
-                  <h3>EG Media</h3>
-                  <p>The voice of modern agriculture in Nigeria.</p>
-                  <Link to="/media" className="link-green">Read News &rarr;</Link>
-                </div>
+              <div className="impact-card">
+                <Users size={40} className="impact-icon blue"/>
+                <h3>Social Empowerment</h3>
+                <p>With over 6,500 employees and a network of 200+ rural out-growers, we are one of the largest private employers, providing skills transfer from our partners in Thailand and the UK.</p>
+              </div>
+              <div className="impact-card">
+                <ShieldCheck size={40} className="impact-icon dark"/>
+                <h3>Corporate Integrity</h3>
+                <p>Recognized by the "Nigeria Fast Growth 50" awards, our governance model is built on transparency, ISO-standard safety protocols, and ethical capital deployment.</p>
               </div>
             </div>
           </div>
@@ -148,15 +198,15 @@ const Home = () => {
           <div className="container stats-flex">
             <div className="stat-box-green">
               <span className="stat-num">{statsInView && <CountUp end={4000} duration={2.5} />}Ha</span>
-              <span className="stat-txt">Cultivated Land</span>
+              <span className="stat-txt">Arable Land Cultivated</span>
             </div>
             <div className="stat-box-green">
-              <span className="stat-num">{statsInView && <CountUp end={100} duration={2.5} />}k</span>
-              <span className="stat-txt">Bags Capacity</span>
+              <span className="stat-num">{statsInView && <CountUp end={15} duration={2.5} />}</span>
+              <span className="stat-txt">International Partners</span>
             </div>
             <div className="stat-box-green">
-              <span className="stat-num">{statsInView && <CountUp end={20} duration={2.5} />}</span>
-              <span className="stat-txt">Years Farming</span>
+              <span className="stat-num">{statsInView && <CountUp end={32} duration={2.5} />}</span>
+              <span className="stat-txt">Years of Legacy</span>
             </div>
           </div>
         </section>
@@ -167,4 +217,3 @@ const Home = () => {
 };
 
 export default Home;
-
