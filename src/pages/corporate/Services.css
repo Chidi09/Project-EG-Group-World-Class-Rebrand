@@ -5,23 +5,17 @@
   --svc-black: #0a0a0a;
 }
 
-/* --- THE SNAP CONTAINER --- */
+/* --- BASE WRAPPER (desktop uses normal page scrollbar) --- */
 .services-master-wrapper { 
   background: #fff; 
   width: 100%; 
-  height: 100vh;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
+  min-height: 100vh;
 }
 
 /* --- GENERIC SECTION STYLING --- */
 .svc-hero, 
 .sector-block { 
-  min-height: 100vh;
   width: 100%;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -129,15 +123,25 @@
 
 /* --- MOBILE & RESPONSIVE --- */
 @media (max-width: 900px) {
+  /* On mobile, turn Services into a snapping slide-deck */
+  .services-master-wrapper {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+  }
+
+  .svc-hero,
+  .sector-block {
+    min-height: 100vh;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    justify-content: flex-start;
+    padding: 100px 0;
+  }
+
   .svc-title { font-size: 3.5rem; }
   .sector-layout, .sector-layout.reverse { grid-template-columns: 1fr; direction: ltr; gap: 40px; }
-  
-  .svc-hero, .sector-block { 
-    height: auto; 
-    min-height: 100vh; 
-    padding: 100px 0; 
-    justify-content: flex-start;
-  }
 
   .sector-sidebar { 
     height: auto; 
