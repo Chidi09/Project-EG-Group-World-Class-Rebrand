@@ -15,7 +15,8 @@ import {
   Globe,
   PenTool,
   CheckCircle,
-  Building
+  Building,
+  ChevronDown
 } from 'lucide-react';
 import './Services.css';
 
@@ -64,6 +65,10 @@ const Services = () => {
                 that bridges the gap between raw potential and refined excellence.
               </p>
             </motion.div>
+          </div>
+          <div className="scroll-indicator">
+            <span>Scroll to Explore</span>
+            <ChevronDown size={24} />
           </div>
           <div className="hero-divider" />
         </section>
