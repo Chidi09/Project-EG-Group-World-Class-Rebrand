@@ -7,40 +7,50 @@ import { useInView } from 'react-intersection-observer';
 import { ArrowRight, Leaf, Hammer, Globe, TrendingUp, Users, ShieldCheck } from 'lucide-react';
 import './Home.css';
 
-// --- HERO SLIDES DATA ---
+// --- HERO SLIDES DATA (FIXED LINKS) ---
 const slides = [
   {
     id: 1,
     theme: 'agric',
-    image: '/images/hero-agric.jpg', // Ensure this exists
+    image: '/images/hero-agric.jpg',
     badge: 'Food Security',
     icon: <Leaf size={14} className="spin-icon"/>,
     title: <>Cultivating <br/><span className="text-highlight">Abundance.</span></>,
-    desc: "We are the architects of Nigeria's food future. Through precision agronomy and mechanized processing, we transform 4,000 hectares of raw potential into sustainable nourishment for millions.",
-    ctaLink: '/services',
-    ctaText: 'Explore Our Farms'
+    desc: "We are the architects of Nigeria's food future. Through precision agronomy and mechanized processing, we transform 4,000 hectares of raw potential into sustainable nourishment.",
+    // ACTION: Links to Services (Agric Section)
+    primaryLink: '/services',
+    primaryText: 'Explore Our Farms',
+    // ACTION: Links to Contact for Partnership
+    secondaryLink: '/contact',
+    secondaryText: 'Partner With Us'
   },
   {
     id: 2,
     theme: 'const',
-    image: '/images/const-hero-skyline.jpg', // Ensure this exists
+    image: '/images/hero-const.jpg',
     badge: 'Infrastructure',
     icon: <Hammer size={14} className="spin-icon"/>,
     title: <>Building <br/><span className="text-highlight gold">Legacies.</span></>,
-    desc: "From complex civil engineering to master-planned communities. We blend structural integrity with eco-conscious design to build the skylines of tomorrow.",
-    ctaLink: '/services',
-    ctaText: 'View Projects'
+    desc: "From complex civil engineering to master-planned communities. We blend structural integrity with eco-conscious design.",
+    // ACTION: Links to Portfolio
+    primaryLink: '/portfolio',
+    primaryText: 'View Projects',
+    secondaryLink: '/contact',
+    secondaryText: 'Start a Project'
   },
   {
     id: 3,
     theme: 'corp',
-    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=80', // Corporate Skyline
+    image: '/images/hero-corp.jpg',
     badge: 'Global Vision',
     icon: <Globe size={14} className="spin-icon"/>,
     title: <>Redefining <br/><span className="text-highlight blue">Standards.</span></>,
-    desc: "A diversified conglomerate moving from words to action. We leverage global partnerships and local expertise to drive economic growth and industrial excellence.",
-    ctaLink: '/about',
-    ctaText: 'Our Story'
+    desc: "A diversified conglomerate moving from words to action. We leverage global partnerships and local expertise to drive economic growth.",
+    // ACTION: Links to About History
+    primaryLink: '/about',
+    primaryText: 'Our Story',
+    secondaryLink: '/team',
+    secondaryText: 'Meet Leadership'
   }
 ];
 
@@ -101,13 +111,13 @@ const Home = () => {
                   {slides[current].desc}
                 </p>
 
-                {/* Buttons */}
+                {/* DYNAMIC BUTTONS (FIXED) */}
                 <div className="hero-btn-group">
-                  <Link to={slides[current].ctaLink} className="btn-primary-dynamic">
-                    {slides[current].ctaText}
+                  <Link to={slides[current].primaryLink} className="btn-primary-dynamic">
+                    {slides[current].primaryText} <ArrowRight size={18} style={{ marginLeft: '8px' }} />
                   </Link>
-                  <Link to="/contact" className="btn-outline-dynamic">
-                    Partner With Us
+                  <Link to={slides[current].secondaryLink} className="btn-outline-dynamic">
+                    {slides[current].secondaryText}
                   </Link>
                 </div>
               </motion.div>
@@ -120,13 +130,14 @@ const Home = () => {
                   key={idx} 
                   className={`dot ${current === idx ? 'active' : ''}`}
                   onClick={() => setCurrent(idx)}
+                  aria-label={`Go to slide ${idx + 1}`}
                 />
               ))}
             </div>
           </div>
         </section>
 
-        {/* --- 2. THE "GOLDEN HARVEST" PROMO (Rice Offer) --- */}
+        {/* --- 2. MARKET ALERT PROMO --- */}
         <section className="promo-section">
           <div className="container">
             <div className="promo-card">
@@ -134,22 +145,23 @@ const Home = () => {
                 <div className="deal-tag">MARKET ALERT</div>
                 <h2>EG Premium Tomato Rice</h2>
                 <p className="promo-lead">
-                  <strong>Food security is national security.</strong> We are releasing 100,000 bags of premium, stone-free rice to the market. 
-                  This is part of our commitment to stabilizing local food prices while maintaining export-grade quality.
+                  <strong>Food security is national security.</strong> We are releasing 100,000 bags of premium, stone-free rice. 
+                  Direct from our factory to your warehouse.
                 </p>
                 
                 <ul className="promo-features">
                   <li><strong>Wholesale:</strong> 50kg Bags @ ₦60,000 (Nationwide Delivery)</li>
                   <li><strong>Bulk Logic:</strong> Minimum Order Quantity (MOQ) of 750 Bags (1 Truck)</li>
-                  <li><strong>Customization:</strong> White-label branding available for corporate partners.</li>
+                  <li><strong>Factory Direct:</strong> No middle-men, fully branded.</li>
                 </ul>
 
-                <a href="https://wa.me/2348039227191" className="btn-whatsapp">
+                <a href="https://wa.me/2348039227191" target="_blank" rel="noopener noreferrer" className="btn-whatsapp">
                   Secure Allocation (WhatsApp) <ArrowRight size={18} />
                 </a>
               </div>
               <div className="promo-visual">
-                <img src="/images/Gemini_Generated_Image_sqco47sqco47sqco.jpg" alt="EG Rice Bags" className="rice-bag-img" />
+                {/* Matches renamed rice texture image */}
+                <img src="/images/rice-texture.jpg" alt="EG Rice" className="rice-bag-img" />
                 <div className="discount-circle">
                   <span>Factory</span>
                   <strong>Direct</strong>

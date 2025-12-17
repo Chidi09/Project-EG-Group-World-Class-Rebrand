@@ -12,7 +12,7 @@ const ConstHome = () => {
         {/* --- 1. HERO: MONUMENTAL --- */}
         <section className="const-hero-brand">
           <div className="hero-bg-overlay-green"></div>
-          <div className="const-hero-bg" style={{backgroundImage: "url('/images/logos/green eco friendly building architecture.jpg')"}}></div>
+          <div className="const-hero-bg" style={{backgroundImage: "url('/images/hero-const.jpg')"}}></div>
           
           <div className="container hero-content-brand">
             <span className="brand-pill">EG Construction</span>
@@ -74,7 +74,7 @@ const ConstHome = () => {
              </div>
 
              <div className="project-image-frame">
-                <img src="/images/logos/evangel housing estate .jpg" alt="Evangel Estate" />
+                <img src="/images/project-evangel.jpg" alt="Evangel Estate" />
              </div>
           </div>
         </section>

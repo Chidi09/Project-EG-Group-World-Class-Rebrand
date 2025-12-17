@@ -8,7 +8,7 @@ const executives = [
     name: "Chidi Ulelu",
     credential: "MSc",
     role: "CEO",
-    image: "/images/logos/Chidi.jpg",
+    image: "/images/team-chidi.jpg",
     bio: "A visionary agro-consultant and international businessman with decades of experience across South Africa, Europe, and Thailand. He has championed sustainable farming practices that have increased yield by 40% across partner farms.",
     fullBio: "Chidi Ulelu is an alumnus of University of Port Harcourt and Lagos. An Agro-Consultant and an International businessman. He has practiced Agriculture in South Africa, East Central and West Europe and studied in the prestigious Kasetsart (Agriculture) University of Thailand and the Prince of Chumphon Fisheries College."
   },
@@ -16,7 +16,7 @@ const executives = [
     name: "Victoria Nkechi Ulelu",
     credential: "Mgmt",
     role: "Executive Director",
-    image: "/images/logos/Nkechi.jpg",
+    image: "/images/team-nkechi.jpg",
     bio: "An expert in Cluster Management and Distribution Systems, ensuring high-level customer service and operational excellence.",
     fullBio: "Trained in Cluster Management of small and medium Enterprises in Thailand. Guidance Counsellor and skilled in distribution systems. Her effort has provided a high level of customer service with excellent communication, personalised delivery, and a highly flexible and adaptable approach to every project."
   }
