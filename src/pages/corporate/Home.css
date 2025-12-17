@@ -60,14 +60,39 @@
   font-family: 'Playfair Display', serif; font-size: 5.5rem; line-height: 1.05; margin-bottom: 25px;
   text-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
+/* BASE TEXT HIGHLIGHT STYLE */
 .text-highlight {
   font-style: italic;
-  background: linear-gradient(90deg, #4CAF50, #81C784);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(90deg, #4CAF50, #81C784); /* Green Default */
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent; /* Fallback */
+  animation: shine 4s linear infinite;
+  font-weight: 700;
   filter: drop-shadow(0 0 15px rgba(76, 175, 80, 0.5));
 }
-.text-highlight.gold { background: linear-gradient(90deg, #FFD700, #FDB931); filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.5)); }
-.text-highlight.blue { background: linear-gradient(90deg, #42A5F5, #1E88E5); filter: drop-shadow(0 0 15px rgba(30, 136, 229, 0.5)); }
+
+/* GOLD VARIANT (Construction) */
+.text-highlight.gold { 
+  background-image: linear-gradient(90deg, #FFD700, #FDB931); 
+  filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.5));
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* BLUE VARIANT (Corporate) */
+.text-highlight.blue { 
+  background-image: linear-gradient(90deg, #42A5F5, #1E88E5); 
+  filter: drop-shadow(0 0 15px rgba(30, 136, 229, 0.5));
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+@keyframes shine {
+  to { background-position: 200% center; }
+}
 
 .hero-desc-main {
   font-size: 1.35rem; color: #f0f0f0; margin-bottom: 50px; font-weight: 300; line-height: 1.7;
