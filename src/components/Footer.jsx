@@ -52,7 +52,7 @@ const Footer = () => {
           </div>
           <div className="contact-row">
             <Mail size={16} className="f-icon"/>
-            <span>info@erstegraceland.net</span>
+            <span>erstegraceland@yahoo.co.uk</span>
           </div>
         </div>
 
