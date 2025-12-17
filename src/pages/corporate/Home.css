@@ -37,8 +37,8 @@
 /* Overlays based on Theme */
 .hero-overlay { position: absolute; inset: 0; z-index: 1; transition: 0.5s; }
 .hero-overlay.agric { background: linear-gradient(to right, rgba(27, 77, 62, 0.95), rgba(27, 77, 62, 0.4)); }
-.hero-overlay.const { background: linear-gradient(to right, rgba(20, 30, 48, 0.95), rgba(36, 59, 85, 0.4)); }
-.hero-overlay.corp { background: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.4)); }
+.hero-overlay.const { background: linear-gradient(to right, rgba(20, 30, 48, 0.8), rgba(36, 59, 85, 0.3)); }
+.hero-overlay.corp { background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)); }
 
 .hero-content-layer {
   position: relative; z-index: 5; color: white; max-width: 900px;
@@ -253,6 +253,65 @@
 }
 .btn-whatsapp:hover { background: #128C7E; transform: translateY(-4px); }
 
+/* --- 2. MANIFESTO SECTION (NEW) --- */
+.manifesto-section { padding: 120px 0; background: #fff; text-align: center; }
+.manifesto-content { max-width: 900px; margin: 0 auto; }
+.section-label { 
+  display: block; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 3px; 
+  color: var(--rice-gold); margin-bottom: 20px; font-weight: 700; 
+}
+.manifesto-content h2 { 
+  font-family: 'Playfair Display', serif; font-size: 3.5rem; color: var(--deep-green); 
+  margin-bottom: 30px; line-height: 1.2; 
+}
+.lead-text { font-size: 1.4rem; color: #555; line-height: 1.8; font-weight: 300; margin-bottom: 50px; }
+.lead-text em { color: var(--leaf-green); font-style: normal; font-weight: 600; }
+
+.signature-line { border-top: 1px solid #eee; display: inline-block; padding-top: 20px; width: 200px; }
+.sig-block strong { display: block; font-family: 'Playfair Display', serif; font-size: 1.2rem; color: #333; }
+.sig-block span { font-size: 0.9rem; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+
+/* --- 4. PROCESS SECTION (NEW) --- */
+.process-section { padding: 100px 0; background: #fdfdfd; border-top: 1px solid #eee; }
+.process-grid { display: flex; align-items: center; justify-content: space-between; margin-top: 60px; }
+.process-step { 
+  background: white; padding: 40px 30px; border-radius: 12px; border: 1px solid #eee; 
+  text-align: center; flex: 1; box-shadow: 0 10px 30px rgba(0,0,0,0.03); 
+}
+.step-icon { 
+  width: 70px; height: 70px; background: var(--deep-green); color: white; 
+  border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; 
+}
+.process-step h4 { font-size: 1.4rem; margin-bottom: 10px; font-family: 'Playfair Display', serif; }
+.step-arrow { color: #ddd; padding: 0 20px; }
+
+/* --- 5. PARALLAX STRIP (NEW) --- */
+.parallax-strip { 
+  position: relative; height: 500px; overflow: hidden; display: flex; align-items: center; justify-content: center; 
+  color: white; text-align: center; 
+}
+.strip-bg {
+  position: absolute; top: -20%; left: 0; width: 100%; height: 140%;
+  background-image: url('/images/hero-const.jpg');
+  background-size: cover; background-position: center; z-index: 0;
+}
+.strip-overlay { position: relative; z-index: 1; background: rgba(0,0,0,0.6); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+.strip-content h2 { font-size: 3.5rem; font-family: 'Playfair Display', serif; margin-bottom: 15px; }
+.strip-content p { font-size: 1.2rem; margin-bottom: 30px; letter-spacing: 1px; color: #ccc; }
+.btn-strip { 
+  border: 2px solid white; color: white; padding: 15px 40px; border-radius: 50px; 
+  text-transform: uppercase; letter-spacing: 2px; font-weight: 700; transition: 0.3s; 
+}
+.btn-strip:hover { background: white; color: black; }
+
+/* --- 7. PARTNER MARQUEE (NEW) --- */
+.partners-marquee { padding: 80px 0; background: white; overflow: hidden; }
+.partners-label { text-align: center; text-transform: uppercase; color: #999; letter-spacing: 2px; margin-bottom: 40px; font-size: 0.8rem; font-weight: 700; }
+.marquee-track-wrapper { width: 100%; overflow: hidden; white-space: nowrap; }
+.marquee-track { display: inline-flex; animation: scroll 30s linear infinite; gap: 80px; align-items: center; }
+.partner-logo-box img { height: 50px; filter: grayscale(100%); opacity: 0.5; transition: 0.3s; }
+.partner-logo-box img:hover { filter: grayscale(0); opacity: 1; }
+@keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
 /* --- 4. STATS --- */
 .green-stats { background: var(--deep-green); padding: 100px 0; color: white; }
@@ -266,6 +325,15 @@
 .stat-num { font-size: 4.5rem; font-family: 'Playfair Display', serif; display: block; line-height: 1; }
 .stat-txt { font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.8; margin-top: 10px; display: block; }
 
+/* --- 9. FINAL CTA (NEW) --- */
+.final-cta { padding: 120px 0; background: var(--off-white); text-align: center; }
+.final-cta h2 { font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--deep-green); margin-bottom: 20px; }
+.final-cta p { font-size: 1.2rem; color: #666; margin-bottom: 40px; }
+.btn-final { 
+  background: var(--deep-green); color: white; padding: 20px 60px; border-radius: 5px; 
+  font-size: 1.2rem; font-weight: bold; transition: 0.3s; 
+}
+.btn-final:hover { background: #143a2f; transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
 
 /* RESPONSIVE */
 @media (max-width: 900px) {
@@ -278,6 +346,11 @@
   .stats-flex { flex-direction: column; gap: 60px; }
   
   .impact-grid { grid-template-columns: 1fr; }
+  .manifesto-content h2 { font-size: 2.5rem; }
+  .lead-text { font-size: 1.1rem; }
+  .process-grid { flex-direction: column; gap: 40px; }
+  .step-arrow { transform: rotate(90deg); margin: 20px 0; }
+  .strip-content h2 { font-size: 2.5rem; }
 }
 
 @media (max-width: 768px) {
@@ -287,8 +360,6 @@
   
   .promo-text { padding: 40px 20px; }
   .promo-visual { height: 250px; }
-  .discount-circle { width: 80px; height: 80px; top: 20px; right: 20px; }
-  
   .section-head-center h2 { font-size: 2.5rem; }
   .stat-num { font-size: 3rem; }
 }
