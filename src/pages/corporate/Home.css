@@ -342,7 +342,17 @@
   .hero-btn-group { flex-direction: column; width: 100%; }
   .btn-primary-dynamic, .btn-outline-dynamic { width: 100%; text-align: center; }
   
+  /* Promo: stack image and text for better mobile flow */
   .promo-card { flex-direction: column-reverse; }
+  .promo-text { padding: 40px 20px; }
+  .pricing-grid {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .promo-specs {
+    flex-direction: column;
+    gap: 12px;
+  }
   .stats-flex { flex-direction: column; gap: 60px; }
   
   .impact-grid { grid-template-columns: 1fr; }
@@ -350,15 +360,20 @@
   .lead-text { font-size: 1.1rem; }
   .process-grid { flex-direction: column; gap: 40px; }
   .step-arrow { transform: rotate(90deg); margin: 20px 0; }
+  /* Parallax strip: slightly shorter and more padded on small screens */
+  .parallax-strip { height: 360px; }
   .strip-content h2 { font-size: 2.5rem; }
+  .strip-content p {
+    font-size: 1rem;
+    padding: 0 20px;
+  }
 }
 
 @media (max-width: 768px) {
   .hero-section-dynamic { height: 90vh; }
   .hero-title-main { font-size: 2.8rem; }
   .hero-desc-main { font-size: 1.1rem; }
-  
-  .promo-text { padding: 40px 20px; }
+
   .promo-visual { height: 250px; }
   .section-head-center h2 { font-size: 2.5rem; }
   .stat-num { font-size: 3rem; }
