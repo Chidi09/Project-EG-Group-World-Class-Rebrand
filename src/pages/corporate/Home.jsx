@@ -141,32 +141,60 @@ const Home = () => {
         <section className="promo-section">
           <div className="container">
             <div className="promo-card">
+              
+              {/* LEFT: The Data & Offer */}
               <div className="promo-text">
-                <div className="deal-tag">MARKET ALERT</div>
+                <div className="deal-header">
+                  <span className="deal-tag">LIMITED STOCK</span>
+                  <span className="deal-timer">Offer Ends Soon</span>
+                </div>
+                
                 <h2>EG Premium Tomato Rice</h2>
                 <p className="promo-lead">
-                  <strong>Food security is national security.</strong> We are releasing 100,000 bags of premium, stone-free rice. 
-                  Direct from our factory to your warehouse.
+                  <strong>100,000 Bags Released.</strong> Secure your stock of Nigeria's finest, stone-free rice. 
+                  Factory direct to your warehouse.
                 </p>
                 
-                <ul className="promo-features">
-                  <li><strong>Wholesale:</strong> 50kg Bags @ ₦60,000 (Nationwide Delivery)</li>
-                  <li><strong>Bulk Logic:</strong> Minimum Order Quantity (MOQ) of 750 Bags (1 Truck)</li>
-                  <li><strong>Factory Direct:</strong> No middle-men, fully branded.</li>
+                <div className="pricing-grid">
+                  <div className="price-item">
+                    <span className="label">Wholesale (50kg)</span>
+                    <span className="price">₦60,000</span>
+                    <span className="sub">Nationwide Delivery</span>
+                  </div>
+                  <div className="price-item">
+                    <span className="label">Pickup Price</span>
+                    <span className="price">₦56,000</span>
+                    <span className="sub">Ex-Factory</span>
+                  </div>
+                </div>
+                
+                <ul className="promo-specs">
+                  <li>MOQ: <strong>750 Bags (1 Truck)</strong></li>
+                  <li>Branding: <strong>White-label Available</strong></li>
                 </ul>
 
-                <a href="https://wa.me/2348039227191" target="_blank" rel="noopener noreferrer" className="btn-whatsapp">
-                  Secure Allocation (WhatsApp) <ArrowRight size={18} />
+                <a
+                  href="https://wa.me/2348039227191"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-whatsapp"
+                >
+                  Secure Allocation via WhatsApp <ArrowRight size={18} />
                 </a>
               </div>
+              
+              {/* RIGHT: The Product Visual (The Rice Image) */}
               <div className="promo-visual">
-                {/* Matches renamed rice texture image */}
-                <img src="/images/rice-texture.jpg" alt="EG Rice" className="rice-bag-img" />
-                <div className="discount-circle">
-                  <span>Factory</span>
-                  <strong>Direct</strong>
+                <div className="spotlight-glow"></div>
+                {/* Ensure this image is JUST the bags, cropped nicely */}
+                <img src="/images/promo-rice-bags.jpg" alt="EG Rice Bags" className="rice-product-img" />
+                
+                <div className="floating-badge">
+                  <span className="badge-title">Direct</span>
+                  <span className="badge-val">Factory</span>
                 </div>
               </div>
+
             </div>
           </div>
         </section>

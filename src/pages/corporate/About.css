@@ -1,89 +1,117 @@
 /* src/pages/corporate/About.css */
 
 :root {
-  --about-green: #1B4D3E; 
-  --about-light: #E8F5E9;
+  --about-dark: #1B4D3E; 
   --about-gold: #D4AF37;
+  --about-white: #ffffff;
+  --about-grey: #f4f4f4;
 }
 
-.about-elite-wrapper { background: #fff; }
+.about-text-wrapper { background: var(--about-white); }
 
-/* HERO */
-.about-hero-elite {
-  padding: 150px 0 100px; text-align: center;
-  background: var(--about-green); color: white;
-  background-image: linear-gradient(rgba(27, 77, 62, 0.9), rgba(27, 77, 62, 0.9)), url('/images/hero-agric.jpg');
-  background-size: cover; background-attachment: fixed;
-}
-.since-tag { 
-  background: rgba(255,255,255,0.1); padding: 5px 15px; border-radius: 20px; 
-  font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; border: 1px solid rgba(255,255,255,0.3);
-}
-.about-hero-elite h1 { font-family: 'Playfair Display', serif; font-size: 4.5rem; margin: 30px 0; line-height: 1.1; }
-.text-accent { color: var(--about-gold); font-style: italic; }
-.about-hero-elite p { font-size: 1.3rem; opacity: 0.9; max-width: 600px; margin: 0 auto; font-weight: 300; }
-
-/* TIMELINE */
-.timeline-section { padding: 100px 0; background: #fff; }
-.section-head { text-align: center; margin-bottom: 80px; }
-.section-head h2 { font-size: 3rem; color: var(--about-green); font-family: 'Playfair Display', serif; }
-.green-line { width: 60px; height: 4px; background: var(--about-gold); margin: 20px auto; }
-
-.timeline-container { position: relative; max-width: 900px; margin: 0 auto; }
-/* Center Line */
-.timeline-container::before {
-  content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: #eee;
+/* --- 1. HERO --- */
+.about-hero-text {
+  padding: 180px 0 120px;
+  background: var(--about-dark);
+  color: white;
 }
 
-.timeline-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 80px; }
-.timeline-row.reverse { flex-direction: row-reverse; }
+.hero-top-line { display: flex; align-items: center; gap: 20px; margin-bottom: 30px; }
+.since-badge { font-family: monospace; color: var(--about-gold); letter-spacing: 2px; text-transform: uppercase; }
+.line-divider { height: 1px; background: rgba(255,255,255,0.2); width: 100px; }
 
-.timeline-content { width: 45%; padding: 40px; }
-.timeline-content.left { text-align: right; }
-.timeline-content.right { text-align: left; }
+.big-type {
+  font-family: 'Playfair Display', serif;
+  font-size: 6rem;
+  line-height: 0.95;
+  margin-bottom: 40px;
+}
+.outline-text { -webkit-text-stroke: 1px white; color: transparent; }
+.gold-text { color: var(--about-gold); font-style: italic; }
 
-.year-label { font-size: 4rem; font-weight: 800; color: rgba(27, 77, 62, 0.1); display: block; line-height: 1; margin-bottom: -20px; position: relative; z-index: 0; }
-.timeline-content h3 { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--about-green); position: relative; z-index: 1; margin-bottom: 15px; }
-.timeline-content p { color: #666; font-size: 1.1rem; line-height: 1.6; position: relative; z-index: 1; }
-
-.timeline-visual { 
-  width: 45%; height: 300px; background-size: cover; background-position: center; 
-  border-radius: 12px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); 
-  border: 5px solid white;
+.hero-lead {
+  font-size: 1.4rem;
+  max-width: 600px;
+  line-height: 1.6;
+  opacity: 0.9;
+  font-weight: 300;
+  border-left: 1px solid var(--about-gold);
+  padding-left: 30px;
 }
 
-/* STRUCTURE */
-.structure-section { padding: 100px 0; background: var(--about-green); color: white; }
-.section-head-white { text-align: center; margin-bottom: 60px; }
-.section-head-white h2 { font-size: 3rem; font-family: 'Playfair Display', serif; }
-.section-head-white p { opacity: 0.8; font-size: 1.2rem; }
 
-.structure-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
-.structure-card {
-  background: rgba(255,255,255,0.05); padding: 40px; border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.1); text-align: center; transition: 0.3s;
-}
-.structure-card:hover { background: rgba(255,255,255,0.15); transform: translateY(-5px); }
-.struct-icon { color: var(--about-gold); width: 40px; height: 40px; margin-bottom: 20px; }
-.structure-card h3 { font-size: 1.4rem; margin-bottom: 10px; }
-.structure-card p { opacity: 0.8; }
-
-/* FOOTPRINT */
-.footprint-section { padding: 80px 0; background: #fff; text-align: center; }
-.footprint-section h2 { font-size: 2.5rem; color: var(--about-green); font-family: 'Playfair Display', serif; margin-bottom: 50px; }
-
-.footprint-grid { display: flex; justify-content: center; gap: 60px; flex-wrap: wrap; }
-.fp-item { text-align: center; }
-.fp-icon { color: var(--about-green); margin-bottom: 15px; width: 32px; height: 32px; }
-.fp-item h3 { font-size: 2.5rem; font-weight: 800; color: var(--about-green); margin-bottom: 5px; }
-.fp-item span { color: #888; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
-
-@media (max-width: 900px) {
-  .timeline-container::before { left: 20px; }
-  .timeline-row, .timeline-row.reverse { flex-direction: column; align-items: flex-start; margin-left: 40px; }
-  .timeline-content { width: 100%; text-align: left; padding: 20px 0; }
-  .timeline-visual { width: 100%; }
-  .about-hero-elite h1 { font-size: 3rem; }
+/* --- 2. TIMELINE (Axis Style) --- */
+.timeline-text-section { padding: 100px 0; background: white; }
+.section-label { 
+  font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; 
+  color: #999; margin-bottom: 60px; font-weight: 700; border-bottom: 1px solid #eee; padding-bottom: 20px;
 }
 
+.history-axis {
+  border-left: 1px solid #eee;
+  padding-left: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+.history-node { position: relative; }
+.history-node::before {
+  content: ''; position: absolute; left: -45px; top: 12px;
+  width: 9px; height: 9px; background: var(--about-dark); border-radius: 50%;
+}
+
+.node-year {
+  font-size: 4rem; font-weight: 800; color: #f0f0f0; 
+  line-height: 1; margin-bottom: -20px; position: relative; z-index: 0;
+}
+.node-content { position: relative; z-index: 1; }
+.node-content h3 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--about-dark); margin-bottom: 15px; }
+.node-content p { font-size: 1.15rem; color: #555; max-width: 700px; line-height: 1.7; }
+
+
+/* --- 3. PHILOSOPHY --- */
+.philosophy-section { padding: 100px 0; background: #fcfcfc; text-align: center; }
+.quote-box { max-width: 900px; margin: 0 auto; }
+.quote-icon { color: var(--about-gold); margin-bottom: 30px; opacity: 0.5; }
+.quote-box h2 { 
+  font-family: 'Playfair Display', serif; font-size: 2.5rem; line-height: 1.4; color: #333; margin-bottom: 30px; 
+  font-style: italic;
+}
+.quote-author { text-transform: uppercase; font-size: 0.9rem; letter-spacing: 2px; font-weight: 700; color: var(--about-dark); }
+
+
+/* --- 4. STRUCTURE GRID --- */
+.structure-text-section { padding: 100px 0; background: white; }
+.section-label.dark { color: var(--about-dark); border-color: var(--about-dark); }
+
+.text-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+
+.text-card { 
+  border-top: 2px solid #eee; padding-top: 20px; transition: 0.3s;
+}
+.text-card:hover { border-color: var(--about-gold); }
+
+.card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; color: var(--about-dark); font-weight: 700; }
+.text-card p { font-size: 1rem; color: #666; line-height: 1.6; }
+
+
+/* --- 5. FOOTPRINT --- */
+.footprint-text-section { padding: 80px 0; background: var(--about-dark); color: white; border-top: 1px solid rgba(255,255,255,0.1); }
+.fp-row { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; }
+
+.fp-stat { flex: 1; min-width: 150px; text-align: center; }
+.fp-big { display: block; font-size: 3.5rem; font-family: 'Playfair Display', serif; color: var(--about-gold); line-height: 1; margin-bottom: 10px; }
+.fp-label { text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; opacity: 0.8; }
+
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+  .big-type { font-size: 3.5rem; }
+  .history-axis { border-left: none; padding-left: 0; }
+  .history-node::before { display: none; }
+  .fp-row { flex-direction: column; text-align: left; }
+  .fp-stat { text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; }
+  .fp-stat:last-child { border: none; }
+}
 
