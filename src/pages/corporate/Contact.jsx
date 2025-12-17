@@ -3,35 +3,14 @@ import { MapPin, Phone, Mail, Send, ArrowRight } from 'lucide-react';
 import './Contact.css';
 
 const Contact = () => {
-  // Data for the offices
+  // Single primary office location
   const offices = [
     {
-      id: 'lagos',
-      city: 'Lagos (HQ)',
-      address: '96, Awolowo Way, Ikeja, Lagos',
+      id: 'ota',
+      city: 'Ota (Head Office)',
+      address: 'No 6 Gasline Road, Opposite Chelsea, Ota, Ogun State',
       phone: '0802 312 3167',
-    email: 'erstegraceland@yahoo.co.uk'
-    },
-    {
-      id: 'ph',
-      city: 'Port Harcourt',
-      address: '61, Aba Road, Port Harcourt, Rivers State',
-      phone: '0802 312 3167',
-    email: 'erstegraceland@yahoo.co.uk'
-    },
-    {
-      id: 'imo',
-      city: 'Imo',
-      address: 'Area E, Plot 58, Behind Concord Hotels, New Owerri',
-      phone: '0802 312 3167',
-    email: 'erstegraceland@yahoo.co.uk'
-    },
-    {
-      id: 'calabar',
-      city: 'Calabar',
-      address: '139, Ndidem Usang Iso Road, Calabar, Cross River',
-      phone: '0802 312 3167',
-    email: 'erstegraceland@yahoo.co.uk'
+      email: 'erstegraceland@yahoo.co.uk'
     }
   ];
 
