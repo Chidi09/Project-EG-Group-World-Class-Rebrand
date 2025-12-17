@@ -36,7 +36,7 @@ const About = () => {
                   <h3>The Foundation</h3>
                   <p>Started as <strong>Anchor Services Ltd</strong>, a small-scale consultancy delivering expertise to local farmers.</p>
                 </div>
-                <div className="timeline-visual right" style={{backgroundImage: "url('/images/logos/history-1992.jpg')"}}></div>
+                <div className="timeline-visual right" style={{backgroundImage: "url('/images/history-1992.jpg')"}}></div>
               </div>
 
               {/* Node 2: 2000s */}
@@ -46,7 +46,7 @@ const About = () => {
                   <h3>Rapid Expansion</h3>
                   <p>Expanded into cereal farming, poultry, and fish farming. Began global marketing of agricultural products.</p>
                 </div>
-                <div className="timeline-visual left" style={{backgroundImage: "url('/images/logos/history-growth.jpg')"}}></div>
+                <div className="timeline-visual left" style={{backgroundImage: "url('/images/history-growth.jpg')"}}></div>
               </div>
 
               {/* Node 3: Today */}
@@ -56,7 +56,7 @@ const About = () => {
                   <h3>The Conglomerate</h3>
                   <p>Now <strong>EG Group</strong>. A powerhouse with subsidiaries in Construction, Palm Oil, and Media, spanning 3 continents.</p>
                 </div>
-                <div className="timeline-visual right" style={{backgroundImage: "url('/images/logos/history-today.jpg')"}}></div>
+                <div className="timeline-visual right" style={{backgroundImage: "url('/images/history-today.jpg')"}}></div>
               </div>
             </div>
           </div>

@@ -18,7 +18,7 @@ const slides = [
     title: <>Cultivating <br/><span className="text-highlight">Abundance.</span></>,
     desc: "We are the architects of Nigeria's food future. Through precision agronomy and mechanized processing, we transform 4,000 hectares of raw potential into sustainable nourishment.",
     // ACTION: Links to Services (Agric Section)
-    primaryLink: '/services',
+    primaryLink: '/services#agriculture',
     primaryText: 'Explore Our Farms',
     // ACTION: Links to Contact for Partnership
     secondaryLink: '/contact',
@@ -33,7 +33,7 @@ const slides = [
     title: <>Building <br/><span className="text-highlight gold">Legacies.</span></>,
     desc: "From complex civil engineering to master-planned communities. We blend structural integrity with eco-conscious design.",
     // ACTION: Links to Portfolio
-    primaryLink: '/portfolio',
+    primaryLink: '/services#construction',
     primaryText: 'View Projects',
     secondaryLink: '/contact',
     secondaryText: 'Start a Project'

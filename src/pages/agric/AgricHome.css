@@ -27,7 +27,7 @@
 
 .hero-bg-parallax {
   position: absolute; inset: 0; height: 120%;
-  background-image: url('/images/agric-hero-modern.jpg');
+  background-image: url('/images/hero-agric.jpg');
   background-size: cover; background-position: center; z-index: 0;
 }
 

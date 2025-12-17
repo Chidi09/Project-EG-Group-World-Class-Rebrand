@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, Globe, Tractor, Hammer } from 'lucide-react';
+import { Menu, X, Tractor, Hammer } from 'lucide-react';
 import './Navbar.css';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
   const location = useLocation();
 
   // Determine active section for styling
@@ -31,32 +30,8 @@ const Navbar = () => {
           <li><Link to="/about">About Us</Link></li>
           <li><Link to="/team">Our Team</Link></li>
           <li><Link to="/blog">Blog</Link></li>
+          <li><Link to="/services">Our Expertise</Link></li>
           <li><Link to="/contact" className="nav-btn">Contact</Link></li>
-          
-          {/* THE "EXPLORE US" SWITCHER */}
-          <li 
-            className="explore-dropdown"
-            onMouseEnter={() => setDropdownOpen(true)}
-            onMouseLeave={() => setDropdownOpen(false)}
-          >
-            <button className="explore-btn">
-              Explore Sectors <ChevronDown size={16} />
-            </button>
-            
-            {dropdownOpen && (
-              <div className="dropdown-menu">
-                <Link to="/" className="dropdown-item">
-                  <Globe size={18} /> <span>EG Corporate</span>
-                </Link>
-                <Link to="/agriculture" className="dropdown-item">
-                  <Tractor size={18} /> <span>EG Agriculture</span>
-                </Link>
-                <Link to="/construction" className="dropdown-item">
-                  <Hammer size={18} /> <span>EG Construction</span>
-                </Link>
-              </div>
-            )}
-          </li>
         </ul>
 
         {/* MOBILE MENU TOGGLE */}
@@ -76,10 +51,10 @@ const Navbar = () => {
         <div className="mobile-divider"></div>
         
         <span className="mobile-label">Sectors</span>
-        <Link to="/agriculture" className="mobile-sub-link" onClick={() => setIsOpen(false)}>
+        <Link to="/services#agriculture" className="mobile-sub-link" onClick={() => setIsOpen(false)}>
           <Tractor size={16}/> EG Agriculture
         </Link>
-        <Link to="/construction" className="mobile-sub-link" onClick={() => setIsOpen(false)}>
+        <Link to="/services#construction" className="mobile-sub-link" onClick={() => setIsOpen(false)}>
           <Hammer size={16}/> EG Construction
         </Link>
         

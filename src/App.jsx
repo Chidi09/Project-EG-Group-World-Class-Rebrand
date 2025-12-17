@@ -7,6 +7,7 @@ import Team from './pages/corporate/Team';
 import Contact from './pages/corporate/Contact';
 import Blog from './pages/corporate/Blog';
 import Media from './pages/corporate/Media';
+import Services from './pages/corporate/Services';
 import AgricHome from './pages/agric/AgricHome';
 import ConstHome from './pages/construct/ConstHome';
 
@@ -22,6 +23,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/media" element={<Media />} />
+        <Route path="/services" element={<Services />} />
 
         {/* Sub-Sites */}
         <Route path="/agriculture" element={<AgricHome />} />

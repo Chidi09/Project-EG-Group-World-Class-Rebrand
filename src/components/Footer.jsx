@@ -33,9 +33,9 @@ const Footer = () => {
         <div className="footer-col">
           <h4>Sectors</h4>
           <ul className="footer-links">
-            <li><Link to="/agriculture">EG Agriculture</Link></li>
-            <li><Link to="/construction">EG Construction</Link></li>
-            <li><Link to="/media">EG Media</Link></li>
+            <li><Link to="/services#agriculture">EG Agriculture</Link></li>
+            <li><Link to="/services#construction">EG Construction</Link></li>
+            <li><Link to="/services#media">EG Media</Link></li>
           </ul>
         </div>
 
