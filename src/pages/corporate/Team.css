@@ -6,15 +6,10 @@
   --team-gold: #D4AF37;
 }
 
-.team-elite-wrapper { background: #ffffff; width: 100%; overflow-x: hidden; }
+.team-elite-wrapper { background: #f9f9f9; width: 100%; overflow-x: hidden; }
 
 /* HERO */
-.team-elite-hero {
-  padding: 140px 0 80px; 
-  text-align: center; 
-  background: #f8fcf9; 
-  border-bottom: 1px solid #eee;
-}
+.team-elite-hero { padding: 140px 0 80px; text-align: center; background: white; }
 .elite-tag { 
   text-transform: uppercase; letter-spacing: 3px; color: var(--team-gold); 
   font-size: 0.85rem; font-weight: 700; display: block; margin-bottom: 20px; 
@@ -23,58 +18,66 @@
   font-family: 'Playfair Display', serif; font-size: 4rem; color: var(--team-dark); 
   margin-bottom: 20px; line-height: 1.1;
 }
-.team-elite-hero p { font-size: 1.2rem; color: #555; max-width: 600px; margin: 0 auto; }
+.team-elite-hero p { font-size: 1.2rem; color: #555; max-width: 700px; margin: 0 auto; line-height: 1.6; }
 
 
-/* PORTRAITS - THE FIX */
-.portrait-section { padding: 80px 0; background: white; }
+/* PORTRAITS - DYNAMIC GRID */
+.portrait-section { padding: 80px 0 120px; }
 
 .portrait-grid { 
   display: grid; 
-  /* Responsive Grid: 1 column on mobile, 2 on tablet+ */
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
-  gap: 60px; 
-  max-width: 1000px; 
-  margin: 0 auto; 
-  padding: 0 20px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+  gap: 40px; 
 }
 
-.portrait-card { text-align: center; }
-
-.image-frame {
-  /* This creates a fixed aspect ratio container (Vertical Portrait) */
-  width: 100%;
-  aspect-ratio: 3 / 4; 
-  overflow: hidden; 
+/* THE CARD */
+.portrait-card { 
+  background: white; 
   border-radius: 12px; 
+  overflow: hidden; 
+  cursor: pointer;
+  transition: 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.portrait-card:hover { transform: translateY(-10px); box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
+
+/* IMAGE AREA */
+.image-frame {
+  width: 100%;
+  height: 350px; /* Fixed height for uniformity */
+  overflow: hidden; 
   position: relative; 
-  margin-bottom: 30px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.1); 
-  background: #f0f0f0; /* Placeholder color while loading */
 }
 
 .image-frame img { 
-  width: 100%; 
-  height: 100%; 
-  object-fit: cover; /* Ensures it fills without stretching */
-  object-position: top center; /* CRITICAL: Focuses on the face (top), cuts off feet if needed */
-  transition: transform 0.7s ease; 
+  width: 100%; height: 100%; object-fit: cover; object-position: top center; 
+  transition: transform 0.6s ease; 
 }
+.portrait-card:hover img { transform: scale(1.05); }
 
-/* Subtle Zoom on Hover (Optional, remove if client hates movement) */
-.portrait-card:hover img { transform: scale(1.03); }
-
-
-.exec-info h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 8px; color: var(--team-dark); }
-.cred { font-size: 1rem; color: #999; font-weight: 400; font-family: 'Inter', sans-serif; }
-.role { color: var(--team-accent); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; margin-bottom: 20px; display: block; }
-.bio-preview { color: #666; font-size: 1.05rem; line-height: 1.7; margin-bottom: 25px; max-width: 400px; margin-left: auto; margin-right: auto; }
-
-.view-profile-btn {
-  background: white; border: 1px solid var(--team-dark); padding: 12px 30px;
-  border-radius: 50px; cursor: pointer; transition: 0.3s; color: var(--team-dark); font-weight: 600;
+/* Overlay Button */
+.overlay-btn {
+  position: absolute; bottom: 20px; right: 20px;
+  background: white; width: 50px; height: 50px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2); opacity: 0; transform: scale(0.8);
+  transition: 0.3s; color: var(--team-dark);
 }
-.view-profile-btn:hover { background: var(--team-dark); color: white; }
+.portrait-card:hover .overlay-btn { opacity: 1; transform: scale(1); }
+
+/* INFO AREA */
+.exec-info { padding: 30px; }
+
+.name-row { display: flex; align-items: baseline; gap: 10px; margin-bottom: 5px; flex-wrap: wrap; }
+.exec-info h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--team-dark); margin: 0; }
+.cred { font-size: 0.8rem; color: #999; border: 1px solid #ddd; padding: 2px 8px; border-radius: 4px; }
+
+.role { color: var(--team-gold); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; display: block; margin-bottom: 15px; }
+
+.bio-preview { color: #666; font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+.read-more { font-size: 0.9rem; font-weight: 700; color: var(--team-dark); border-bottom: 1px solid var(--team-dark); padding-bottom: 2px; }
 
 
 /* VALUES */
@@ -89,50 +92,43 @@
 /* MODAL STYLES */
 .modal-overlay {
   position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(0,0,0,0.8); z-index: 2000;
+  background: rgba(0,0,0,0.7); z-index: 2000;
   display: flex; align-items: center; justify-content: center;
-  backdrop-filter: blur(5px);
-  padding: 20px;
+  backdrop-filter: blur(8px); padding: 20px;
 }
 
 .modal-box {
-  background: white; width: 800px; max-width: 100%;
+  background: white; width: 900px; max-width: 100%;
   border-radius: 12px; overflow: hidden; position: relative;
-  box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.4);
 }
 
 .close-modal {
   position: absolute; top: 20px; right: 20px; z-index: 10;
-  background: #f0f0f0; border: none; border-radius: 50%; width: 40px; height: 40px;
-  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,0.8); border: none; border-radius: 50%; width: 40px; height: 40px;
+  cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.2s;
 }
 .close-modal:hover { background: #ffdddd; color: red; }
 
-.modal-content-flex { display: flex; }
-.modal-img-col { width: 40%; height: 500px; }
+.modal-content-flex { display: flex; height: 600px; } /* Fixed height for symmetry */
+.modal-img-col { width: 40%; height: 100%; background: #f0f0f0; }
 .modal-img-col img { width: 100%; height: 100%; object-fit: cover; }
 
-.modal-text-col { width: 60%; padding: 50px; display: flex; flex-direction: column; justify-content: center; }
-.modal-text-col h3 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 5px; }
-.modal-role { color: var(--team-gold); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; }
-.modal-bio-text { line-height: 1.8; color: #555; font-size: 1.05rem; }
+.modal-text-col { width: 60%; padding: 60px; overflow-y: auto; }
+.modal-text-col h3 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 5px; color: var(--team-dark); }
+.cred-modal { font-size: 1rem; color: #888; font-family: 'Inter', sans-serif; font-weight: 400; }
 
-@media (max-width: 768px) {
+.modal-role { color: var(--team-gold); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; }
+.modal-divider { width: 60px; height: 3px; background: #eee; margin-bottom: 30px; }
+
+.modal-bio-text { line-height: 1.9; color: #444; font-size: 1.1rem; margin-bottom: 40px; }
+.modal-footer { display: flex; align-items: center; gap: 10px; color: #0077b5; font-weight: 600; cursor: pointer; border-top: 1px solid #eee; padding-top: 20px; }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
   .team-elite-hero h1 { font-size: 3rem; }
-  
-  .portrait-grid { 
-    grid-template-columns: 1fr; /* Force single column */
-    gap: 80px; 
-  }
-  
-  .image-frame {
-    /* Slightly taller on mobile for impact */
-    aspect-ratio: 4 / 5; 
-  }
-  
-  .values-flex { flex-direction: column; gap: 60px; }
-  
-  .modal-content-flex { flex-direction: column; }
-  .modal-img-col { width: 100%; height: 250px; }
+
+  .modal-content-flex { flex-direction: column; height: auto; max-height: 85vh; }
+  .modal-img-col { width: 100%; height: 300px; }
   .modal-text-col { width: 100%; padding: 30px; }
 }
